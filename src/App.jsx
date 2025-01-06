@@ -1,10 +1,11 @@
 import { Header } from './components/header';
+import { Terminal } from './components/terminal';
 
 function App() {
     return (
     <div className="container">
         <Header />
-        {/* Terminal */}
+        <Terminal />
         {/* Features: Install */}
         {/* Features:  */}
         {/* Features:  */}
