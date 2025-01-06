@@ -11,14 +11,19 @@ function TerminalContent() {
                     {feature.terminal.map((terminal, index) => (
                         <span key={index}>
                             <p className="user-input">
-                                <span className="user-input-path">user [21:34:23] ➞ </span>
+                                <span className="user-input-path">user [{format(new Date(), 'HH:mm:ss')}] ➞ </span>
                                 {terminal.command}
                             </p>
-                            <TerminalOutput outputHTML={terminal.outputHTML} />
+                            <TerminalOutput outputHTML={terminal.outputHTML}/>
                         </span>
                     ))}
                 </div>
             ))}
+            <div className="terminal-content--item">
+                <p className="user-input">
+                    <span className="user-input-path">user [{format(new Date(), 'HH:mm:ss')}] ➞ </span>
+                </p>
+            </div>
         </div>
     )
 }

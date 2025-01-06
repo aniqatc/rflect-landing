@@ -1,16 +1,16 @@
 import { Header } from './components/header';
 import { Terminal } from './components/terminal';
+import { Feature } from './components/features';
+import { Wrapper } from './components/extras';
 
 function App() {
     return (
     <div className="container">
         <Header />
-        <Terminal />
-        {/* Features: Install */}
-        {/* Features:  */}
-        {/* Features:  */}
-        {/* Features:  */}
-        {/* Footer:  */}
+        <Wrapper>
+            <Terminal />
+            <Feature />
+        </Wrapper>
     </div>
   )
 }

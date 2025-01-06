@@ -26,10 +26,10 @@ export const features = [
                     <div class="terminal-output--item">
                         <p>A CLI tool for guided reflections and journaling.</p>
                         <div class="commands-section">
-                            <strong>Commands:</strong>
+                            <strong>COMMANDS:</strong>
                             <div class="command-item">
                                 <span class="command-name">write</span>
-                                <span class="command-description">Start a new reflection with a thoughtfully curated prompt</span>
+                                <span class="command-description">Start a reflection with a thoughtfully curated prompt</span>
                             </div>
                             <div class="command-item">
                                 <span class="command-name">show [options]</span>
@@ -76,5 +76,6 @@ export const features = [
                 `
             }
         ],
-    }
+    },
+
 ]

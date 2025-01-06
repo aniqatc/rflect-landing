@@ -1,6 +1,9 @@
 @use 'variables' as *;
 
 .terminal {
+  margin-right: -120px;
+  flex-grow: 1;
+
   .terminal-bar {
     background-color: $bg-gray-primary;
     padding: 12px 14px;
@@ -39,11 +42,11 @@
 
   .terminal-content {
     background-color: $bg-terminal;
-    height: $terminal-height;
+    min-height: $terminal-height;
     border-radius: 6px;
     box-shadow: 0 0 2px 0px rgba(0, 0, 0, 0.75);
-    font-size: 13px;
-    padding: 4px 8px;
+    font-size: 12px;
+    padding: 6px 10px;
 
     .initial-date {
       color: #fff;
@@ -64,7 +67,6 @@
 
       .terminal-output {
         color: $terminal-output-primary;
-        font-size: 12px;
 
         .install-output {
           strong {
@@ -92,7 +94,7 @@
             .command-item {
               margin: 1px 0;
               display: grid;
-              grid-template-columns: 200px 1fr;
+              grid-template-columns: 160px 1fr;
               grid-gap: 8px;
 
               .command-description {
