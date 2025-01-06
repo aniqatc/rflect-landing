@@ -1,7 +1,7 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faClipboard } from '@fortawesome/free-regular-svg-icons'
 
-function Install() {
+function InstallScript() {
     return (
         <button className="install-script">
             <span>npm install -g rflect</span>
@@ -10,4 +10,4 @@ function Install() {
     )
 }
 
-export default Install;
+export default InstallScript;

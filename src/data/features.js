@@ -3,7 +3,7 @@ export const features = [
         id: 1,
         title: 'A command line interface tool',
         description: 'for guided reflections and journaling',
-        includeInstall: true,
+        includeInstallScript: true,
         terminal: [
             {
                 command: 'npm install -g rflect',

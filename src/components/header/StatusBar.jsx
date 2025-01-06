@@ -5,21 +5,26 @@ import { faGithub } from '@fortawesome/free-brands-svg-icons'
 
 function StatusBar() {
     const [stars, setStars] = useState('01');
+    const [version, setVersion] = useState('2.0.0');
 
     useEffect(() => {
-        async function fetchStarCount() {
-            const response = await fetch('https://api.github.com/repos/aniqatc/rflect-cli');
-            const data = await response.json();
-            const count = data.stargazers_count + 1;
+        async function fetchPackageInfo() {
+            const ghResponse = await fetch('https://api.github.com/repos/aniqatc/rflect-cli');
+            const ghData = await ghResponse.json();
+            const count = ghData.stargazers_count + 1;
             setStars(count.toString().padStart(2, '0'));
+
+            const npmResponse = await fetch('https://registry.npmjs.org/rflect/latest');
+            const npmData = await npmResponse.json();
+            setVersion(npmData.version);
         }
-        fetchStarCount();
+        fetchPackageInfo();
     }, [])
 
     return (<div className="status-bar">
         <a href="https://www.npmjs.com/package/rflect" target="_blank" className="status-bar__item">
             <FontAwesomeIcon icon={faCircle} className="status-bar__item--circle" />
-            <p>Active</p>
+            <p>Active <span>v{version}</span></p>
         </a>
         <a href="https://github.com/aniqatc/rflect-cli" target="_blank"  className="status-bar__item">
             <FontAwesomeIcon icon={faStar} className="status-bar__item--star"/>
