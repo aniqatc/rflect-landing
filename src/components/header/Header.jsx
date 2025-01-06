@@ -5,7 +5,7 @@ function Header() {
     return (
         <header>
         <Title>rflect</Title>
-        <StatusBar></StatusBar>
+        <StatusBar />
     </header>
     )
 }
