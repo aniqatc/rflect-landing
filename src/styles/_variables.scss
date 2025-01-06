@@ -8,7 +8,7 @@ $text-secondary: #AAAAAA;
 
 // Layout
 $container-width: 1000px;
-$terminal-height: 500px;
+$terminal-height: 420px;
 
 // Icons
 $circle: #15AF18;
@@ -16,6 +16,7 @@ $star: #FCFF3E;
 $gh: #9D73FF;
 
 // Terminal text
+$terminal-dot-colors: #D01C1C, #CDDC4B, #2EB539;
 $terminal-output-primary: #61B74B;
 $terminal-output-em: #A8EF96;
 $terminal-user-path: #B4DEF6;
