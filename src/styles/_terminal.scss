@@ -1,8 +1,12 @@
 @use 'variables' as *;
 
 .terminal {
-  margin-right: -120px;
-  flex-grow: 1;
+  margin-right: -75px;
+  position: fixed;
+  top: 50%;
+  transform: translate(0, -50%);
+  min-height: $terminal-height;
+  min-width: calc($terminal-height + 200px);
 
   .terminal-bar {
     background-color: $bg-gray-primary;
@@ -42,7 +46,6 @@
 
   .terminal-content {
     background-color: $bg-terminal;
-    min-height: $terminal-height;
     border-radius: 6px;
     box-shadow: 0 0 2px 0px rgba(0, 0, 0, 0.75);
     font-size: 12px;
