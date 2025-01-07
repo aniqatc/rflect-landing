@@ -34,6 +34,7 @@ function TerminalContent({ currentFeatureId = 1 }) {
 
     return (
         <motion.div
+            key={currentFeatureId}
             className="terminal-content"
             variants={terminalVariant}
             initial="hidden"

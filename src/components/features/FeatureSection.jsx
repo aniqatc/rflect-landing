@@ -2,8 +2,8 @@ import { motion } from 'framer-motion';
 import { features } from '../../data/features.js';
 import { ScriptButton } from '../extras/index.js';
 
-function FeatureSection() {
-  return (
+function FeatureSection({ onFeatureChange }) {
+return (
     <div className="feature-container">
       {features.map((feature) => {
         return (
@@ -24,6 +24,7 @@ function FeatureSection() {
               once: false,
               amount: 0.8,
             }}
+            onViewportEnter={() => onFeatureChange(feature.id)}
           >
             <strong className="feature-item--title">{feature.title}</strong>
             <p className="feature-item--description">{feature.description}</p>
