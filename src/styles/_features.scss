@@ -37,7 +37,8 @@
 
     .script-button {
       font-family: inherit;
-      max-width: 90%;
+      max-width: 95%;
+      min-width: 290px;
       font-size: 13px;
       color: $text-secondary;
       border: 1px solid #4c4c4c;
