@@ -78,59 +78,8 @@ export const features = [
   },
   {
     id: 2,
-    title: 'Start your reflection',
-    description: 'Write with thoughtfully curated prompts',
-    includeScript: true,
-    script: 'rflect write',
-    terminal: [
-      {
-        command: 'rflect write',
-        outputHTML: `
-        <div class="terminal-output--item">
-          <div class="writing-session">
-            <div class="prompt-item message">How are you feeling today?</div>
-            <div class="input"><span class="emoji">😌</span> peaceful</div>
-          </div>
-        </div>`,
-      },
-      {
-        command: '',
-        outputHTML: `
-        <div class="terminal-output--item">
-          <div class="writing-session">
-            <div class="prompt-item message">What made you feel most alive today?</div>
-            <div class="input">[Writing your reflection...]</div>
-          </div>
-        </div>`,
-      },
-      {
-        command: '',
-        outputHTML: `
-        <div class="terminal-output--item">
-          <div class="writing-session">
-            <div class="prompt-item message">Add tags (comma-separated) [optional]:</div>
-            <div class="input">gratitude, mindfulness, nature</div>
-          </div>
-        </div>`,
-      },
-      {
-        command: '',
-        outputHTML: `
-        <div class="terminal-output--item">
-            <div class="success-section">
-              <p class="message">✨ Your reflection has been saved!</p>
-              <p>Word Count: <span class="number">250</span></p>
-              <p>Time Spent Writing: <span class="number">15</span>m</p>
-              <p>🔥 <span class="number">3</span> day streak! Keep it up!</p>
-            </div>
-        </div>`,
-      },
-    ],
-  },
-  {
-    id: 3,
     title: 'Initialize your account',
-    description: 'Set personal goals',
+    description: 'Set personal writing preferences and goals to achieve',
     includeScript: true,
     script: 'rflect init',
     terminal: [
@@ -145,6 +94,17 @@ export const features = [
           </div>
         </div>
       `,
+      },
+      {
+        command: '',
+        outputHTML: `
+          <div class="terminal-output--item">
+          <div class="setup-section">
+            <div class="prompt-item message">Would you like to use your system editor for writing? (e.g., vim, nano)?</div>
+            <div class="input">No</div>
+          </div>
+        </div>
+        `
       },
       {
         command: '',
@@ -226,9 +186,60 @@ export const features = [
     ],
   },
   {
+    id: 3,
+    title: 'Start your reflection',
+    description: 'Write with thoughtfully curated prompts',
+    includeScript: true,
+    script: 'rflect write',
+    terminal: [
+      {
+        command: 'rflect write',
+        outputHTML: `
+        <div class="terminal-output--item">
+          <div class="writing-session">
+            <div class="prompt-item message">How are you feeling today?</div>
+            <div class="input"><span class="emoji">😌</span> peaceful</div>
+          </div>
+        </div>`,
+      },
+      {
+        command: '',
+        outputHTML: `
+        <div class="terminal-output--item">
+          <div class="writing-session">
+            <div class="prompt-item message">What made you feel most alive today?</div>
+            <div class="input">[Writing your reflection...]</div>
+          </div>
+        </div>`,
+      },
+      {
+        command: '',
+        outputHTML: `
+        <div class="terminal-output--item">
+          <div class="writing-session">
+            <div class="prompt-item message">Add tags (comma-separated) [optional]:</div>
+            <div class="input">gratitude, mindfulness, nature</div>
+          </div>
+        </div>`,
+      },
+      {
+        command: '',
+        outputHTML: `
+        <div class="terminal-output--item">
+            <div class="success-section">
+              <p class="message">✨ Your reflection has been saved!</p>
+              <p>Word Count: <span class="number">250</span></p>
+              <p>Time Spent Writing: <span class="number">15</span>m</p>
+              <p>🔥 <span class="number">3</span> day streak! Keep it up!</p>
+            </div>
+        </div>`,
+      },
+    ],
+  },
+  {
     id: 4,
     title: 'Pre-defined prompts',
-    description: 'Thought-provoking questions to guide your thoughts',
+    description: 'Browse through the current collection of writing prompts',
     includeScript: true,
     script: 'rflect prompts --all',
     terminal: [
@@ -366,7 +377,7 @@ export const features = [
   {
     id: 5,
     title: 'Writing patterns',
-    description: 'See your stats over time',
+    description: 'See your writing stats over time',
     includeScript: true,
     script: 'rflect stats --all',
     terminal: [
@@ -435,7 +446,7 @@ export const features = [
   {
     id: 6,
     title: 'Track your emotional journey',
-    description: 'See how your moods relate to your writing over time',
+    description: 'See how your moods correlate to your writing habits and content',
     includeScript: true,
     script: 'rflect moods --calendar',
     terminal: [
@@ -503,7 +514,7 @@ export const features = [
   {
     id: 7,
     title: 'Customize your rflect account',
-    description: 'Adjust goals and settings',
+    description: 'Adjust previously set goals and settings or start over',
     includeScript: true,
     script: 'rflect config',
     terminal: [
@@ -592,7 +603,7 @@ export const features = [
   {
     id: 8,
     title: 'Upcoming features',
-    description: 'Get a peek at future rflect features',
+    description: 'See what features are coming to rflect in future updates',
     includeScript: true,
     script: 'rflect upcoming',
     terminal: [
