@@ -30,12 +30,30 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 36px;
       margin: 12px 0;
       cursor: pointer;
+      white-space: nowrap;
 
-      .copy-icon {
+      &--icon {
         font-size: 16px;
+        transition: all 200ms ease;
+
+        &.copied {
+          color: $circle;
+        }
+      }
+
+      .show-copied {
+        opacity: 1;
+        transition: all 200ms ease;
+        font-size: 10px;
+        color: #9a9a9a;
+        margin-right: 4px;
+        margin-left: auto;
+      }
+
+      .hide-copied {
+        opacity: 0;
       }
     }
   }
