@@ -23,6 +23,8 @@ header {
   max-width: inherit;
   margin: 0 auto;
   z-index: 100;
+  background-color: rgba(18, 18, 18, 0.1);
+  backdrop-filter: blur(2px);
 
   @media (max-width: 550px) {
     flex-direction: column;
