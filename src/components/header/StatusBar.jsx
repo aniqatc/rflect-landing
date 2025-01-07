@@ -5,7 +5,7 @@ import { faGithub } from '@fortawesome/free-brands-svg-icons'
 
 function StatusBar() {
     const [stars, setStars] = useState('01');
-    const [version, setVersion] = useState('2.0.0');
+    const [version, setVersion] = useState("2.0.0");
 
     useEffect(() => {
         async function fetchPackageInfo() {

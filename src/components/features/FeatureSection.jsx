@@ -1,7 +1,7 @@
 import { features } from '../../data/features.js';
-import { InstallScript } from "../extras/index.js";
+import { ScriptButton } from "../extras/index.js";
 
-function Feature() {
+function FeatureSection() {
     return (
         <>
             {features.map((feature) => {
@@ -9,7 +9,7 @@ function Feature() {
                     <div key={feature.id} className="feature-item">
                         <strong className="feature-item--title">{feature.title}</strong>
                         <p className="feature-item--description">{feature.description}</p>
-                        {feature.includeInstallScript ? <InstallScript /> : null}
+                        {feature.includeScript ? <ScriptButton>{feature.script}</ScriptButton> : null}
                     </div>
                 )
             })}
@@ -17,4 +17,4 @@ function Feature() {
     )
 }
 
-export default Feature;
+export default FeatureSection;

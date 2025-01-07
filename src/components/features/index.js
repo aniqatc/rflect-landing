@@ -1,1 +1,1 @@
-export { default as Feature } from './Feature.jsx';
+export { default as FeatureSection } from './FeatureSection.jsx';

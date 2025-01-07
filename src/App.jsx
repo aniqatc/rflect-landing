@@ -1,6 +1,6 @@
 import { Header } from './components/header';
 import { Terminal } from './components/terminal';
-import { Feature } from './components/features';
+import { FeatureSection } from './components/features';
 import { Wrapper } from './components/extras';
 
 function App() {
@@ -9,7 +9,7 @@ function App() {
         <Header />
         <Wrapper>
             <Terminal />
-            <Feature />
+            <FeatureSection />
         </Wrapper>
     </div>
   )

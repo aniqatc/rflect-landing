@@ -12,7 +12,7 @@
     font-size: 14px;
   }
 
-  .install-script {
+  .script-button {
     font-family: inherit;
     width: 100%;
     font-size: 13px;
@@ -28,7 +28,7 @@
     margin: 12px 0;
     cursor: pointer;
 
-    &__icon {
+    .copy-icon {
       font-size: 16px;
     }
   }
