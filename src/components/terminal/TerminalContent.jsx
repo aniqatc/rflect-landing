@@ -50,9 +50,11 @@ function TerminalContent({ currentFeatureId = 1 }) {
 
       <div className="terminal-content--item">
         {terminalContentToShow?.terminal?.map((content, index) => [
-          <motion.div key={`input-${index}`} variants={terminalItemVariants}>
-            <TerminalInput>{content.command}</TerminalInput>
-          </motion.div>,
+          content.command && (
+            <motion.div key={`input-${index}`} variants={terminalItemVariants}>
+              <TerminalInput>{content.command}</TerminalInput>
+            </motion.div>
+          ),
           <motion.div key={`output-${index}`} variants={terminalItemVariants}>
             <TerminalOutput outputHTML={content.outputHTML} />
           </motion.div>,

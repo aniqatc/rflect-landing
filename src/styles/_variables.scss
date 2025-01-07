@@ -16,8 +16,13 @@ $star: #fcff3e;
 $gh: #9d73ff;
 
 // Terminal text
-$terminal-dot-colors: #d01c1c, #cddc4b, #2eb539;
-$terminal-output-primary: #61b74b;
-$terminal-output-em: #a8ef96;
-$terminal-user-path: #b4def6;
+$terminal-dot-colors: #ff3b3b, #ffbc5c, #00c853;
+$terminal-output-primary: #62bdf5;
+$terminal-output-em: #b4def6;
+$terminal-user-path: #64b5f6;
 $terminal-user-input: #c5cc9c;
+$terminal-numbers: #fcff3e;
+$terminal-date: $terminal-numbers;
+$terminal-command: $terminal-output-em;
+$terminal-message: #edccff;
+$terminal-more: #c4c4c4;
