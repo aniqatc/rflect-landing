@@ -19,27 +19,30 @@
 - Font Awesome for icons
 - GitHub API for repository star count
 - NPM API for current version
-- Ipify API to display visitor's address 
+- Ipify API to display visitor's address
 
 ## Features
 
 ### Dynamic Terminal Simulation
+
 - Provides an interactive, scroll-based demonstration of the CLI tool
 - Each feature is presented as a live terminal session
 - Content appears dynamically as users scroll, mimicking a real terminal experience
 - Showcases:
-    - Installation process
-    - Available commands
-    - Sample outputs
-    - User interactions
+  - Installation process
+  - Available commands
+  - Sample outputs
+  - User interactions
 
 ### Key Interactive Elements
+
 - **Scroll-Triggered Content**: Terminal outputs reveal themselves as users scroll
 - **Live GitHub Star Counter**: Real-time display of repository stars
 - **Live NPM Version**: Real-time display of the current version code for the package
 - **Interactive Command Buttons**: One-click copy functionality for each feature's command
 
 ## Key Concepts
+
 - Uses Framer Motion for smooth scroll animations
 - Uses React state and useEffect for dynamic content rendering
 - Integrates with GitHub API for live star count
@@ -69,4 +72,3 @@ Built with [Vite](https://vite.dev/). Available scripts include:
 - `npm run preview`: Preview production build
 - `npm run lint`: Run ESLint
 - `npm run format`: Format code with Prettier
-
