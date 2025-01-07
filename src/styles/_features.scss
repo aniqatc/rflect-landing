@@ -10,13 +10,6 @@
     max-width: 330px;
     scroll-snap-align: center;
 
-    &:first-of-type {
-      padding-top: 100px;
-    }
-
-    &:last-of-type {
-      padding-bottom: 42px;
-    }
 
     @media (max-width: 870px) {
       align-items: center;
@@ -28,6 +21,10 @@
     @media (max-width: 450px) {
       padding-top: 0;
       justify-content: center;
+
+      &:first-of-type {
+        padding-top: 100px;
+      }
     }
 
     &--title {
