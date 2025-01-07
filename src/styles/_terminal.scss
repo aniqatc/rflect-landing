@@ -1,3 +1,4 @@
+@use "sass:list";
 @use 'variables' as *;
 
 .terminal {
@@ -6,7 +7,6 @@
   top: 50%;
   left: 50%;
   transform: translate(-15%, -50%);
-  min-height: $terminal-height;
   width: min(calc($terminal-height + 225px), 100%);
 
   .terminal-bar {
@@ -30,7 +30,7 @@
 
         @for $i from 1 through 3 {
           &:nth-child(#{$i}) {
-            background-color: nth($terminal-dot-colors, $i);
+            background-color: list.nth($terminal-dot-colors, $i);
           }
         }
       }
@@ -46,6 +46,7 @@
   }
 
   .terminal-content {
+    min-height: $terminal-height;
     background-color: $bg-terminal;
     border-radius: 6px;
     box-shadow: 0 0 2px 0px rgba(0, 0, 0, 0.75);

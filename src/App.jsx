@@ -8,7 +8,7 @@ function App() {
       <div className="container">
         <Header />
         <FeatureSection />
-        <Terminal />
+        <Terminal currentFeatureId={1} />
       </div>
     </div>
   );

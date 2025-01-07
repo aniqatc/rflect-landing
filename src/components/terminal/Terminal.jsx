@@ -1,11 +1,11 @@
 import TerminalBar from './TerminalBar';
 import TerminalContent from './TerminalContent';
 
-function Terminal() {
+function Terminal({ currentFeatureId }) {
   return (
     <section className="terminal">
       <TerminalBar />
-      <TerminalContent />
+      <TerminalContent currentFeatureId={currentFeatureId}/>
     </section>
   );
 }
