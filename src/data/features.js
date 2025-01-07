@@ -78,5 +78,16 @@ export const features = [
             }
         ],
     },
-
+    {
+        id: 2,
+        title: 'Pre-defined prompts',
+        description: 'Thought-provoking questions to guide your thoughts',
+        includeScript: false,
+    },
+    {
+        id: 3,
+        title: 'Writing patterns',
+        description: 'See your stats over time',
+        includeScript: false,
+    },
 ]

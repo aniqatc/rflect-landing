@@ -4,7 +4,7 @@ import { faClipboard } from '@fortawesome/free-regular-svg-icons'
 function ScriptButton({ children }) {
     return (
         <button className="script-button">
-            <span>{children}</span>
+            <p>{children}</p>
             <FontAwesomeIcon icon={faClipboard} className="copy-icon" />
         </button>
     )

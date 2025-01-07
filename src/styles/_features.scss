@@ -1,35 +1,42 @@
 @use 'variables' as *;
 
-.feature-item {
-  margin-right: auto;
-
-  &--title {
-    font-size: 16px;
-  }
-
-  &--description {
-    margin-top: 4px;
-    font-size: 14px;
-  }
-
-  .script-button {
-    font-family: inherit;
-    width: 100%;
-    font-size: 13px;
-    color: $text-secondary;
-    border: 1px solid #4C4C4C;
-    background-color: $bg-gray-secondary;
-    padding: 8px 16px;
-    border-radius: 6px;
+.feature-container {
+  .feature-item {
+    margin-right: auto;
+    height: 100vh;
     display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 16px;
-    margin: 12px 0;
-    cursor: pointer;
+    justify-content: center;
+    flex-direction: column;
+    max-width: 330px;
 
-    .copy-icon {
+    &--title {
       font-size: 16px;
+    }
+
+    &--description {
+      margin-top: 4px;
+      font-size: 14px;
+    }
+
+    .script-button {
+      font-family: inherit;
+      max-width: 90%;
+      font-size: 13px;
+      color: $text-secondary;
+      border: 1px solid #4C4C4C;
+      background-color: $bg-gray-secondary;
+      padding: 8px 16px;
+      border-radius: 6px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      margin: 12px 0;
+      cursor: pointer;
+
+      .copy-icon {
+        font-size: 16px;
+      }
     }
   }
 }

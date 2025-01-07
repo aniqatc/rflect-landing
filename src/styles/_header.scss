@@ -22,6 +22,8 @@ header {
   right: 0;
   max-width: inherit;
   margin: 0 auto;
+  z-index: 100;
+  background: $bg-primary;
 
   .title {
     font-size: 36px;

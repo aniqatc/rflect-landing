@@ -26,11 +26,3 @@ body {
   padding: 0 1rem;
   position: relative;
 }
-
-.wrapper {
-  display: flex;
-  flex-direction: row-reverse;
-  align-items: center;
-  gap: 24px;
-  min-height: calc(100vh - 100px);
-}
