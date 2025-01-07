@@ -3,7 +3,7 @@ import { features } from '../../data/features.js';
 import { ScriptButton } from '../extras/index.js';
 
 function FeatureSection({ onFeatureChange }) {
-return (
+  return (
     <div className="feature-container">
       {features.map((feature) => {
         return (

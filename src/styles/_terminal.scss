@@ -1,4 +1,4 @@
-@use "sass:list";
+@use 'sass:list';
 @use 'variables' as *;
 
 .terminal {
@@ -8,6 +8,17 @@
   left: 50%;
   transform: translate(-15%, -50%);
   width: min(calc($terminal-height + 225px), 100%);
+
+  @media (max-width: 870px) {
+    width: min(calc($terminal-height + 100px), 90%);
+    bottom: 24px;
+    top: revert;
+    transform: translate(-50%, 0);
+  }
+
+  @media (max-width: 450px) {
+    display: none;
+  }
 
   .terminal-bar {
     background-color: $bg-gray-primary;
@@ -52,6 +63,13 @@
     box-shadow: 0 0 2px 0px rgba(0, 0, 0, 0.75);
     font-size: 12px;
     padding: 6px 10px;
+    word-wrap: break-word;
+
+    @media (max-width: 870px) {
+      font-size: 11px;
+      padding: 6px 8px;
+      min-height: calc($terminal-height - 100px);
+    }
 
     .initial-date {
       color: #fff;

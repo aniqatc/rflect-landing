@@ -10,6 +10,17 @@
     max-width: 330px;
     scroll-snap-align: center;
 
+    @media (max-width: 870px) {
+      align-items: center;
+      margin: 0 auto;
+      justify-content: flex-start;
+      padding-top: 250px;
+    }
+
+    @media (max-width: 450px) {
+      padding-top: 0;
+    }
+
     &--title {
       font-size: 16px;
     }
@@ -17,6 +28,10 @@
     &--description {
       margin-top: 4px;
       font-size: 14px;
+
+      @media (max-width: 870px) {
+        text-align: center;
+      }
     }
 
     .script-button {
