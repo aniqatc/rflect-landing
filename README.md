@@ -2,9 +2,9 @@
 
 📝 Landing page for a CLI tool focused on providing guided reflections and journaling.
 
-**Relevant Links: [NPM Package](https://www.npmjs.com/package/rflect) | [CLI Repository](https://github.com/aniqatc/rflect-cli) | [Live: Landing Page](https://rflect.aniqa.dev)**
+**Links: [NPM Package](https://www.npmjs.com/package/rflect) | [CLI Repository](https://github.com/aniqatc/rflect-cli) | [Landing Page](https://rflect.aniqa.dev)**
 
-<img src="public/rflect-screenshot-zoomed.png">
+<a href="https://rflect.aniqa.dev" target="_blank"><img src="public/rflect-screenshot-zoomed.png"></a>
 
 ## Tech
 
