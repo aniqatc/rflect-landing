@@ -88,6 +88,7 @@ export const features = [
         id: 3,
         title: 'Writing patterns',
         description: 'See your stats over time',
-        includeScript: false,
+        includeScript: true,
+        script: "rflect stats --all",
     },
 ]

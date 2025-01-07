@@ -6,7 +6,8 @@
   left: 50%;
   transform: translate(-15%, -50%);
   min-height: $terminal-height;
-  min-width: calc($terminal-height + 200px);
+  width: min(calc($terminal-height + 225px), 100%);
+
 
   .terminal-bar {
     background-color: $bg-gray-primary;
