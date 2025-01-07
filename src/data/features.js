@@ -166,7 +166,7 @@ export const features = [
             <div class="input">Daily entries</div>
           </div>
 </div>
-`
+`,
       },
       {
         command: '',
@@ -177,7 +177,7 @@ export const features = [
             <div class="input"><span class="number">1</span></div>
           </div>
 </div>
-`
+`,
       },
       {
         command: '',
@@ -188,7 +188,7 @@ export const features = [
             <div class="input">Weekly</div>
           </div>
 </div>
-`
+`,
       },
       {
         command: '',
@@ -199,7 +199,7 @@ export const features = [
             <div class="input"><span class="number">2000</span></div>
           </div>
 </div>
-`
+`,
       },
       {
         command: '',
@@ -212,7 +212,7 @@ export const features = [
               <li>Write <span class="number">1</span> entry daily</li>
               <li>Write <span class="number">2000</span> words weekly</li>
             </ul>
-          </div>`
+          </div>`,
       },
       {
         command: '',
@@ -221,8 +221,8 @@ export const features = [
               <li><span class="command">rflect write</span> - Start your first reflection</li>
               <li><span class="command">rflect show</span> - View your entries</li>
               <li><span class="command">rflect stats</span> - Track your progress</li>
-            </ul>`
-      }
+            </ul>`,
+      },
     ],
   },
   {
@@ -355,12 +355,12 @@ export const features = [
       },
       {
         command: '',
-        outputHTML: `<div class="more-content">[...more prompts available]</div>`
+        outputHTML: `<div class="more-message">[...more prompts available]</div>`,
       },
       {
         command: '',
-        outputHTML:  `<p class="message">Use <span class="command">rflect write</span> to get a random prompt and start your reflection.</p>`
-      }
+        outputHTML: `<p class="message">Use <span class="command">rflect write</span> to get a random prompt and start your reflection.</p>`,
+      },
     ],
   },
   {
@@ -443,7 +443,7 @@ export const features = [
         command: 'rflect moods --calendar',
         outputHTML: `
         <div class="terminal-output--item">
-          <h3 class="message"><span class="emoji">😌 peaceful Calendar:</span> <span class="date">January <span class="number">2025</span></span></h3>
+          <h3 class="message"><span class="emoji">🥰 loved Calendar:</span> <span class="date">January <span class="number">2025</span></span></h3>
           <div class="calendar-grid">
             <div class="calendar-header">Su  Mo  Tu  We  Th  Fr  Sa</div>
             <div class="calendar-week">
@@ -456,28 +456,28 @@ export const features = [
             </div>
             <div class="calendar-week">
               <span class="number">7</span>   
-              <span class="emoji">😌</span>  
+              <span class="emoji">🥰</span>  
               <span class="number">9</span>   
               <span class="number">10</span>  
               <span class="number">11</span>  
-              <span class="emoji">😌</span>  
+              <span class="emoji">🥰</span>  
               <span class="number">13</span>
             </div>
             <div class="calendar-week">
               <span class="number">14</span>  
               <span class="number">15</span>  
-              <span class="emoji">😌</span>  
+              <span class="emoji">🥰</span>  
               <span class="number">17</span>  
               <span class="number">18</span>  
               <span class="number">19</span>  
-              <span class="number">20</span>
+              <span class="emoji">🥰</span>
             </div>
             <div class="calendar-week">
               <span class="number">21</span>  
               <span class="number">22</span>  
               <span class="number">23</span>  
-              <span class="emoji">😌</span>  
-              <span class="number">25</span>  
+              <span class="emoji">🥰</span>  
+              <span class="emoji">🥰</span>  
               <span class="number">26</span>  
               <span class="number">27</span>
             </div>
@@ -495,9 +495,9 @@ export const features = [
         command: '',
         outputHTML: `
           <div class="terminal-output--item">
-            <p>You felt <span class="emoji">😌 peaceful </span> on <span class="number">4</span> days this month.</p>
-</div>`
-      }
+            <p>You felt <span class="emoji">🥰 loved </span> on <span class="number">6</span> days this month.</p>
+</div>`,
+      },
     ],
   },
   {
@@ -585,8 +585,8 @@ export const features = [
           <div class="option-details message">
     Options: <span class="command">-t entries|words -f daily|weekly|monthly -v &lt;number&gt;</span>
   </div>
-`
-      }
+`,
+      },
     ],
   },
   {
@@ -624,19 +624,18 @@ export const features = [
               <span class="description">Personalize your journaling experience with themes</span>
             </div>
           </div>
-        </div>`
+        </div>`,
       },
       {
         command: '',
-        outputHTML:
-        `<div class="terminal-output--item">
+        outputHTML: `<div class="terminal-output--item">
           <div class="commands-section">
             <div class="command-item">
               <span class="command">rflect backup</span>
               <span class="description">Keep your reflections safe with cloud backup</span>
             </div>
           </div>
-        </div>`
+        </div>`,
       },
       {
         command: '',
@@ -649,7 +648,7 @@ export const features = [
             </div>
           </div>
         </div>
-`
+`,
       },
       {
         command: '',
@@ -662,7 +661,7 @@ export const features = [
             </div>
           </div>
         </div>
-`
+`,
       },
       {
         command: '',
@@ -675,7 +674,7 @@ export const features = [
             </div>
           </div>
         </div>
-`
+`,
       },
       {
         command: '',
@@ -688,8 +687,8 @@ export const features = [
             </div>
           </div>
         </div>
-`
-      }
+`,
+      },
     ],
   },
 ];

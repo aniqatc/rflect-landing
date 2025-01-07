@@ -3,18 +3,22 @@
 .feature-container {
   .feature-item {
     margin-right: auto;
-    height: 100vh;
+    height: calc(100vh - 100px);
     display: flex;
     justify-content: center;
     flex-direction: column;
     max-width: 330px;
     scroll-snap-align: center;
 
+    &:first-of-type {
+      padding-top: 100px;
+    }
+
     @media (max-width: 870px) {
       align-items: center;
       margin: 0 auto;
       justify-content: flex-start;
-      padding-top: 250px;
+      padding-top: 220px;
     }
 
     @media (max-width: 450px) {

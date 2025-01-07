@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { Header } from './components/header';
 import { Terminal } from './components/terminal';
 import { FeatureSection } from './components/features';
+import { Footer } from './components/footer';
 
 function App() {
   const [featureId, setFeatureId] = useState(1);
@@ -9,10 +10,10 @@ function App() {
     <div className="scroll-wrapper">
       <div className="container">
         <Header />
-        {/* handle how feature id is set in feature section */}
         <FeatureSection onFeatureChange={setFeatureId} />
         <Terminal currentFeatureId={featureId} />
       </div>
+      <Footer />
     </div>
   );
 }

@@ -1,1 +1,33 @@
 @use 'variables' as *;
+
+.footer {
+  max-width: $container-width;
+  margin: 0 auto 16px;
+  padding: 0 32px;
+  font-size: 12px;
+  text-align: end;
+  color: $text-secondary;
+
+  @media (max-width: 450px) {
+    text-align: center;
+  }
+
+  .code-icon {
+    color: $terminal-message;
+  }
+
+  .heart-icon {
+    color: $terminal-numbers;
+  }
+
+  &-link {
+    text-decoration: none;
+    color: $terminal-output-em;
+    transition: all 200ms ease-in;
+
+    &:hover {
+      text-decoration: underline;
+      color: $text-primary;
+    }
+  }
+}

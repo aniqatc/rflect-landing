@@ -11,7 +11,7 @@
 
   @media (max-width: 870px) {
     width: min(calc($terminal-height + 100px), 90%);
-    bottom: 24px;
+    bottom: 48px;
     top: revert;
     transform: translate(-50%, 0);
   }
@@ -136,7 +136,7 @@
         color: $terminal-output-em;
       }
 
-      .more-content {
+      .more-message {
         margin-top: 24px;
         color: $terminal-more;
         font-style: italic;
@@ -162,6 +162,8 @@
               display: inline-block;
               margin-top: 24px;
               color: $terminal-output-em;
+              font-size: 12px;
+              letter-spacing: 1.2px;
             }
 
             .command-item {
@@ -170,8 +172,8 @@
               grid-template-columns: 160px 1fr;
               grid-gap: 8px;
 
-              .command-description {
-                color: $terminal-output-em;
+              .description {
+                color: $terminal-output-primary;
                 font-style: italic;
               }
             }
@@ -214,10 +216,11 @@
             margin-top: 16px;
             margin-left: 16px;
             margin-bottom: 16px;
-            border: 1px solid rgba($terminal-output-em, 0.2);
+            border: 1px solid rgba($terminal-output-em, 0.1);
             width: fit-content;
             padding: 2px 6px;
             border-radius: 4px;
+            box-shadow: 0 0 2px 1px rgba(#9d73ff, 0.5);
 
             .calendar-header {
               letter-spacing: 2px;
