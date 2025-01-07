@@ -5,7 +5,7 @@ function Terminal({ currentFeatureId }) {
   return (
     <section className="terminal">
       <TerminalBar />
-      <TerminalContent currentFeatureId={currentFeatureId}/>
+      <TerminalContent currentFeatureId={currentFeatureId} />
     </section>
   );
 }
