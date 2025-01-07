@@ -10,6 +10,11 @@
   box-sizing: border-box;
 }
 
+html {
+  /* fix for iOS toolbar covering the footer on mobile */
+  scroll-padding-bottom: env(safe-area-inset-bottom);
+}
+
 body {
   background: $bg-primary;
   color: $text-primary;
