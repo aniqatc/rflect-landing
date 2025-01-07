@@ -1,14 +1,14 @@
 export const features = [
-    {
-        id: 1,
-        title: 'A command line interface tool',
-        description: 'for guided reflections and journaling',
-        includeScript: true,
-        script: "npm install -g rflect",
-        terminal: [
-            {
-                command: 'npm install -g rflect',
-                outputHTML: `
+  {
+    id: 1,
+    title: 'A command line interface tool',
+    description: 'for guided reflections and journaling',
+    includeScript: true,
+    script: 'npm install -g rflect',
+    terminal: [
+      {
+        command: 'npm install -g rflect',
+        outputHTML: `
                     <div class="install-output">
                         <p>installed <strong>56 packages</strong> for rflect, including:</p>
                         <ul>
@@ -19,11 +19,11 @@ export const features = [
                             <li>inquirer</li>
                         </ul>
                     </div>
-                `
-            },
-            {
-                command: 'rflect',
-                outputHTML: `
+                `,
+      },
+      {
+        command: 'rflect',
+        outputHTML: `
                     <div class="terminal-output--item">
                         <p>A CLI tool for guided reflections and journaling.</p>
                         <div class="commands-section">
@@ -74,21 +74,21 @@ export const features = [
                             </div>
                         </div>
                     </div>
-                `
-            }
-        ],
-    },
-    {
-        id: 2,
-        title: 'Pre-defined prompts',
-        description: 'Thought-provoking questions to guide your thoughts',
-        includeScript: false,
-    },
-    {
-        id: 3,
-        title: 'Writing patterns',
-        description: 'See your stats over time',
-        includeScript: true,
-        script: "rflect stats --all",
-    },
-]
+                `,
+      },
+    ],
+  },
+  {
+    id: 2,
+    title: 'Pre-defined prompts',
+    description: 'Thought-provoking questions to guide your thoughts',
+    includeScript: false,
+  },
+  {
+    id: 3,
+    title: 'Writing patterns',
+    description: 'See your stats over time',
+    includeScript: true,
+    script: 'rflect stats --all',
+  },
+];
