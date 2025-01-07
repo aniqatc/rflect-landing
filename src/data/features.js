@@ -458,47 +458,51 @@ export const features = [
           <h3 class="message"><span class="emoji">🥰 loved Calendar:</span> <span class="date">January <span class="number">2025</span></span></h3>
           <div class="calendar-grid">
             <div class="calendar-header">Su  Mo  Tu  We  Th  Fr  Sa</div>
-            <div class="calendar-week">
-              <span class="number">1</span>   
-              <span class="number">2</span>   
-              <span class="number">3</span>   
-              <span class="number">4</span>   
-              <span class="number">5</span>   
-              <span class="number">6</span>
-            </div>
-            <div class="calendar-week">
-              <span class="number">7</span>   
-              <span class="emoji">🥰</span>  
-              <span class="number">9</span>   
-              <span class="number">10</span>  
-              <span class="number">11</span>  
-              <span class="emoji">🥰</span>  
-              <span class="number">13</span>
-            </div>
-            <div class="calendar-week">
-              <span class="number">14</span>  
-              <span class="number">15</span>  
-              <span class="emoji">🥰</span>  
-              <span class="number">17</span>  
-              <span class="number">18</span>  
-              <span class="number">19</span>  
-              <span class="emoji">🥰</span>
-            </div>
-            <div class="calendar-week">
-              <span class="number">21</span>  
-              <span class="number">22</span>  
-              <span class="number">23</span>  
-              <span class="emoji">🥰</span>  
-              <span class="emoji">🥰</span>  
-              <span class="number">26</span>  
-              <span class="number">27</span>
-            </div>
-            <div class="calendar-week">
-              <span class="number">28</span>  
-              <span class="number">29</span>  
-              <span class="number">30</span>  
-              <span class="number">31</span>
-            </div>
+<div class="calendar-week">
+  <span class="number faded">29</span>   
+  <span class="number faded">30</span>   
+  <span class="number faded">31</span>   
+  <span class="number">1</span>   
+  <span class="number">2</span>   
+  <span class="number">3</span>   
+  <span class="number">4</span>
+</div>
+<div class="calendar-week">
+  <span class="number">5</span>   
+  <span class="number">6</span>   
+  <span class="emoji">🥰</span>  
+  <span class="number">8</span>   
+  <span class="number">9</span>   
+  <span class="emoji">🥰</span>  
+  <span class="number">11</span>
+</div>
+<div class="calendar-week">
+  <span class="number">12</span>  
+  <span class="emoji">🥰</span>  
+  <span class="number">14</span>  
+  <span class="number">15</span>  
+  <span class="emoji">🥰</span>  
+  <span class="number">17</span>  
+  <span class="number">18</span>
+</div>
+<div class="calendar-week">
+  <span class="number">19</span>  
+  <span class="emoji">🥰</span>  
+  <span class="number">21</span>  
+  <span class="number">22</span>  
+  <span class="emoji">🥰</span>  
+  <span class="emoji">🥰</span>  
+  <span class="number">25</span>
+</div>
+<div class="calendar-week">
+  <span class="number">26</span>  
+  <span class="number">27</span>  
+  <span class="number">28</span>  
+  <span class="number">29</span>  
+  <span class="number">30</span>  
+  <span class="number">31</span>  
+  <span class="number faded">1</span>
+</div>
           </div>
         </div>
       `,
