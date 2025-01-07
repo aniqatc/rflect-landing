@@ -9,14 +9,14 @@
   transform: translate(-15%, -50%);
   width: min(calc($terminal-height + 225px), 100%);
 
-  @media (max-width: 870px) {
+  @media (max-width: $md-breakpoint) {
     width: min(calc($terminal-height + 100px), 90%);
     bottom: 48px;
     top: revert;
     transform: translate(-50%, 0);
   }
 
-  @media (max-width: 450px) {
+  @media (max-width: $sm-breakpoint) {
     display: none;
   }
 
@@ -29,7 +29,7 @@
     justify-content: space-between;
     position: relative;
 
-    @media (max-width: 870px) {
+    @media (max-width: $md-breakpoint) {
       font-size: 14px;
     }
 
@@ -70,7 +70,7 @@
     word-wrap: break-word;
     overflow: hidden;
 
-    @media (max-width: 870px) {
+    @media (max-width: $md-breakpoint) {
       font-size: 11px;
       padding: 6px 8px;
       min-height: calc($terminal-height - 100px);

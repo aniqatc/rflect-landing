@@ -104,7 +104,7 @@ export const features = [
             <div class="input">No</div>
           </div>
         </div>
-        `
+        `,
       },
       {
         command: '',
@@ -446,7 +446,8 @@ export const features = [
   {
     id: 6,
     title: 'Track your emotional journey',
-    description: 'See how your moods correlate to your writing habits and content',
+    description:
+      'See how your moods correlate to your writing habits and content',
     includeScript: true,
     script: 'rflect moods --calendar',
     terminal: [

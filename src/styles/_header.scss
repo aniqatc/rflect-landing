@@ -40,7 +40,7 @@ header {
     align-items: center;
     gap: 24px;
 
-    @media (max-width: 390px) {
+    @media (max-width: $xs-breakpoint) {
       gap: 12px;
     }
 

@@ -8,7 +8,7 @@
   text-align: end;
   color: $text-secondary;
 
-  @media (max-width: 450px) {
+  @media (max-width: $sm-breakpoint) {
     text-align: center;
     position: absolute;
     left: 0;

@@ -10,15 +10,18 @@
     max-width: 330px;
     scroll-snap-align: center;
 
-
-    @media (max-width: 870px) {
+    @media (max-width: $md-breakpoint) {
       align-items: center;
       margin: 0 auto;
       justify-content: flex-start;
-      padding-top: 220px;
+      padding-top: 170px;
+
+      &:first-of-type {
+        padding-top: 220px;
+      }
     }
 
-    @media (max-width: 450px) {
+    @media (max-width: $sm-breakpoint) {
       padding-top: 0;
       justify-content: center;
 
@@ -39,7 +42,7 @@
       margin-top: 4px;
       font-size: 14px;
 
-      @media (max-width: 870px) {
+      @media (max-width: $md-breakpoint) {
         text-align: center;
       }
     }
