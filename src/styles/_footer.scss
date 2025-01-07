@@ -10,7 +10,8 @@
 
   @media (max-width: 450px) {
     text-align: center;
-    margin: -48px auto 32px;
+    margin: 16px auto 32px;
+    padding-bottom: env(safe-area-inset-bottom, 32px);
   }
 
   .code-icon {

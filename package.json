@@ -1,7 +1,8 @@
 {
   "name": "rflect-landing",
   "private": true,
-  "version": "0.0.0",
+  "version": "1.0.0",
+  "description": "A landing page for the CLI tool focused on providing guided reflections and journaling",
   "type": "module",
   "scripts": {
     "start": "vite",
@@ -9,6 +10,31 @@
     "lint": "eslint .",
     "preview": "vite preview",
     "format": "prettier --write ."
+  },
+  "keywords": [
+    "cli",
+    "journal",
+    "journaling",
+    "reflection",
+    "mindfulness",
+    "productivity",
+    "personal-development",
+    "writing-tool",
+    "terminal",
+    "self-improvement",
+    "daily-journal",
+    "mental-health",
+    "goal-tracking"
+  ],
+  "author": {
+    "name": "Aniqa",
+    "email": "hello@aniqa.dev",
+    "url": "https://aniqa.dev"
+  },
+  "homepage": "https://rflect.aniqa.dev",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/aniqatc/rflect-landing.git"
   },
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^6.7.2",

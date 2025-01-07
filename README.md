@@ -1,8 +1,38 @@
-# React + Vite
+# rflect
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+📝 Landing page for a CLI tool focused on providing guided reflections and journaling.
 
-Currently, two official plugins are available:
+[Rflect NPM Package](https://www.npmjs.com/package/rflect)
+[Rflect CLI Repository](https://github.com/aniqatc/rflect-cli)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Tech
+
+- React
+- Sass
+- Framer Motion
+- Date-fns
+- Font Awesome (for icons)
+
+## API Integrations
+
+- GitHub for star count
+- NPM for current version code
+
+## Features
+
+
+## Project Structure
+
+- `components/` 
+- `data/`
+- `styles/`
+
+## Key Concepts
+
+#### React:
+
+#### Styling:
+
+## Available Scripts
+
+Built with Vite.
