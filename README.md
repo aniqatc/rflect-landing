@@ -19,7 +19,7 @@
 - Font Awesome for icons
 - GitHub API for repository star count
 - NPM API for current version
-- Ipify API to display visitor's address
+- Ipify API to display visitor's IP address
 
 ## Features
 
@@ -39,14 +39,16 @@
 - **Scroll-Triggered Content**: Terminal outputs reveal themselves as users scroll
 - **Live GitHub Star Counter**: Real-time display of repository stars
 - **Live NPM Version**: Real-time display of the current version code for the package
-- **Interactive Command Buttons**: One-click copy functionality for each feature's command
+- **Interactive Command Buttons**: One-click copy functionality for each feature's command, starting with the NPM install script provided in the topmost section of the page
 
 ## Key Concepts
 
-- Uses Framer Motion for smooth scroll animations
-- Uses React state and useEffect for dynamic content rendering
+- Uses Framer Motion with variant objects for customized, sequenced animations
+- Uses Framer Motion for scroll-based triggers for animations, in sync with the native CSS scroll-snapping feature
+- Uses React state and hooks to manage dynamic content rendering
+- Prop drilling used to pass data and callback functions down the component tree (between Feature and Terminal components) to enable the terminal outputs based on the specific feature that is being showcased (which is tracked by scroll position)
 - Integrates with GitHub API for live star count
-- Implements clipboard API for one-click command copying
+- Implements native clipboard API for one-click command copying
 
 ## CLI Capabilities
 
