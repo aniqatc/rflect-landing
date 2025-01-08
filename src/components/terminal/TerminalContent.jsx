@@ -11,9 +11,8 @@ function TerminalContent({ currentFeatureId = 1 }) {
   );
 
   const terminalVariant = {
-    hidden: { opacity: 0 },
+    hidden: { opacity: 1 },
     visible: {
-      opacity: 1,
       transition: {
         staggerChildren: 0.4,
       },
