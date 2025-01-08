@@ -40,6 +40,7 @@
 - **Live GitHub Star Counter**: Real-time display of repository stars
 - **Live NPM Version**: Real-time display of the current version code for the package
 - **Interactive Command Buttons**: One-click copy functionality for each feature's command, starting with the NPM install script provided in the topmost section of the page
+- **Custom Modal Component**: Appears on smaller screens, prompting users to view the website on a larger screen for a better experience
 
 ## Key Concepts
 

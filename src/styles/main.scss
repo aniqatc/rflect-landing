@@ -3,6 +3,7 @@
 @use 'terminal';
 @use 'features';
 @use 'footer';
+@use 'modal';
 
 * {
   margin: 0;
@@ -27,6 +28,12 @@ body {
   overflow-y: auto;
   scroll-snap-type: y mandatory;
   position: relative;
+
+  @media (max-width: $sm-breakpoint) {
+    &.no-scroll {
+      overflow: hidden;
+    }
+  }
 }
 
 .container {

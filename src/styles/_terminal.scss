@@ -10,8 +10,8 @@
   width: min(calc($terminal-height + 225px), 100%);
 
   @media (max-width: $md-breakpoint) {
-    width: min(calc($terminal-height + 100px), 90%);
-    bottom: 48px;
+    width: min(calc($terminal-height + 100px), 95%);
+    bottom: 42px;
     top: revert;
     transform: translate(-50%, 0);
   }
