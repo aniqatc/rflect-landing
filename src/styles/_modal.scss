@@ -17,6 +17,7 @@
     backdrop-filter: blur(3px);
     display: grid;
     place-items: center;
+    overflow: hidden;
 
     .modal-content {
       background-color: $bg-terminal;
