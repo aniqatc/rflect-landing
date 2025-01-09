@@ -90,7 +90,7 @@ export const features = [
           <p class="message">Welcome to rflect!</p>
           <div class="setup-section">
             <div class="prompt-item message">What should I call you?</div>
-            <div class="input">Jane</div>
+            <div class="input">Julia</div>
           </div>
         </div>
       `,
@@ -165,7 +165,7 @@ export const features = [
         command: '',
         outputHTML: `
                   <div class="success-message">
-            <p class="message">✨ Welcome, <span class="command">Alex</span>!</p>
+            <p class="message">✨ Welcome, <span class="command">Julia</span>!</p>
             <p class="message">You will be writing in basic text inputs with rflect.</p>
             <p class="message">Your goals:</p>
             <ul>
