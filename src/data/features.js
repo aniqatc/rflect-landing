@@ -1,709 +1,273 @@
+import {
+  format,
+  getDate,
+  getDay,
+  getDaysInMonth,
+  startOfMonth,
+} from 'date-fns';
+
+// Sample mood calendar for the current month
+function createMoodCalendar() {
+  const today = new Date();
+  const firstWeekday = getDay(startOfMonth(today));
+  const totalDays = getDaysInMonth(today);
+  const moodDays = [2, 5, 7, 12, 16, 20, 23, 24];
+
+  const weekdays = ['Su', 'Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa']
+    .map((day) => `<span class="weekday">${day}</span>`)
+    .join('');
+  const blanks = '<span></span>'.repeat(firstWeekday);
+
+  let days = '';
+  for (let day = 1; day <= totalDays; day++) {
+    let status = 'empty';
+    if (day > getDate(today)) status = 'future';
+    else if (moodDays.includes(day)) status = 'mood';
+    days += `<span class="day day--${status}">${day}</span>`;
+  }
+
+  // only count mood days that have already happened this month
+  const moodCount = moodDays.filter((day) => day <= getDate(today)).length;
+
+  return {
+    calendar: `
+      <div class="calendar">
+        <p class="calendar-header">😌 peaceful · ${format(today, 'MMMM yyyy')}</p>
+        <div class="calendar-grid">${weekdays}${blanks}${days}</div>
+      </div>`,
+    summary: `<p class="output">You felt <span class="number">peaceful</span> on <span class="number">${moodCount}</span> ${moodCount === 1 ? 'day' : 'days'} this month.</p>`,
+  };
+}
+
+const moodCalendar = createMoodCalendar();
+
+// Terminal shown in the hero
+export const heroTerminal = {
+  title: 'rflect write',
+  terminal: [
+    {
+      command: 'rflect write',
+      outputHTML: `
+        <p class="prompt">? How are you feeling today?</p>
+        <p class="answer">😌 peaceful</p>
+        <p class="prompt">? What made you feel most alive today?</p>
+        <p class="writing-box">The walk home after the rain. Everything smelled like cut grass and the street was quiet for once.</p>
+        <p class="prompt">? Add tags (comma-separated) <span class="muted">[optional]</span></p>
+        <p class="answer">gratitude, nature</p>`,
+    },
+    {
+      command: '',
+      outputHTML: `<p class="saved">✨ Saved. <span class="number">250</span> words · <span class="number">15</span>m writing</p>`,
+    },
+  ],
+};
+
+// Scroll-snapped feature windows
 export const features = [
   {
     id: 1,
-    title: 'A command line interface tool',
-    description: 'for guided reflections and journaling',
+    title: 'Install rflect',
+    description:
+      'A command line tool for guided reflections and journaling. One global install and you are ready to write.',
     includeScript: true,
     script: 'npm install -g rflect',
     terminal: [
       {
         command: 'npm install -g rflect',
         outputHTML: `
-          <div class="terminal-output--item">
-            <p class="message">installed <strong><span class="number">56</span> packages</strong> for rflect, including:</p>
-            <ul>
-              <li class="command">calendar.js</li>
-              <li class="command">date-fns</li>
-              <li class="command">chalk</li>
-              <li class="command">commander.js</li>
-              <li class="command">inquirer</li>
-            </ul>
-          </div>`,
+          <p class="output">installed <span class="number">56</span> packages for rflect, including:</p>
+          <p class="indent">calendar.js · date-fns · chalk · commander.js · inquirer</p>`,
       },
       {
         command: 'rflect',
         outputHTML: `
-          <div class="terminal-output--item">
-            <p class="message">A CLI tool for guided reflections and journaling.</p>
-            <div class="commands-section">
-              <strong class="command-header">COMMANDS:</strong>
-              <div class="command-item">
-                <span class="command">write</span>
-                <span class="description">Start a reflection with a thoughtfully curated prompt</span>
-              </div>
-              <div class="command-item">
-                <span class="command">show [options]</span>
-                <span class="description">Browse and revisit your past reflections</span>
-              </div>
-              <div class="command-item">
-                <span class="command">prompts [options]</span>
-                <span class="description">Browse available writing prompts</span>
-              </div>
-              <div class="command-item">
-                <span class="command">tags [options]</span>
-                <span class="description">Discover themes in your reflection journey</span>
-              </div>
-              <div class="command-item">
-                <span class="command">moods [options]</span>
-                <span class="description">Track your emotional journey through writing</span>
-              </div>
-              <div class="command-item">
-                <span class="command">init</span>
-                <span class="description">Set up your rflect account with initial preferences</span>
-              </div>
-              <div class="command-item">
-                <span class="command">config [options]</span>
-                <span class="description">Customize your reflection preferences</span>
-              </div>
-              <div class="command-item">
-                <span class="command">stats [options]</span>
-                <span class="description">View insights about your writing journey</span>
-              </div>
-              <div class="command-item">
-                <span class="command">delete [options]</span>
-                <span class="description">Manage your reflection history</span>
-              </div>
-              <div class="command-item">
-                <span class="command">upcoming</span>
-                <span class="description">Peek at future rflect features</span>
-              </div>
-              <div class="command-item">
-                <span class="command">help [command]</span>
-                <span class="description">Display help for command</span>
-              </div>
-            </div>
-          </div>`,
+          <p class="output">A CLI tool for guided reflections and journaling.</p>
+          <p class="heading">COMMANDS:</p>
+          <div class="command-item"><span class="command">write</span><span class="description">Start a reflection with a curated prompt</span></div>
+          <div class="command-item"><span class="command">show [options]</span><span class="description">Revisit your past reflections</span></div>
+          <div class="command-item"><span class="command">prompts [options]</span><span class="description">Browse available writing prompts</span></div>
+          <div class="command-item"><span class="command">tags [options]</span><span class="description">Discover themes in your writing</span></div>
+          <div class="command-item"><span class="command">moods [options]</span><span class="description">Track your emotional journey</span></div>
+          <div class="command-item"><span class="command">init</span><span class="description">Set up your account and preferences</span></div>
+          <div class="command-item"><span class="command">config [options]</span><span class="description">Customize your preferences</span></div>
+          <div class="command-item"><span class="command">stats [options]</span><span class="description">View insights about your writing</span></div>
+          <div class="command-item"><span class="command">delete [options]</span><span class="description">Manage your reflection history</span></div>
+          <div class="command-item"><span class="command">upcoming</span><span class="description">Peek at future rflect features</span></div>`,
       },
     ],
   },
   {
     id: 2,
-    title: 'Initialize your account',
-    description: 'Set personal writing preferences and goals to achieve',
+    title: 'Set up your account',
+    description:
+      'Set personal writing preferences and the goals you want to reach.',
     includeScript: true,
     script: 'rflect init',
     terminal: [
       {
         command: 'rflect init',
         outputHTML: `
-        <div class="terminal-output--item">
-          <p class="message">Welcome to rflect!</p>
-          <div class="setup-section">
-            <div class="prompt-item message">What should I call you?</div>
-            <div class="input">Julia</div>
-          </div>
-        </div>
-      `,
+          <p class="output">Welcome to rflect!</p>
+          <p class="prompt">? What should I call you?</p>
+          <p class="answer">Julia</p>
+          <p class="prompt">? Would you like to use your system editor for writing?</p>
+          <p class="answer">No</p>
+          <p class="prompt">? How often would you like to write with rflect?</p>
+          <p class="answer">Daily entries</p>
+          <p class="prompt">? How many entries would you like to write daily?</p>
+          <p class="answer">1</p>
+          <p class="prompt">? How many words would you like to write weekly?</p>
+          <p class="answer">2000</p>`,
       },
       {
         command: '',
         outputHTML: `
-          <div class="terminal-output--item">
-          <div class="setup-section">
-            <div class="prompt-item message">Would you like to use your system editor for writing? (e.g., vim, nano)?</div>
-            <div class="input">No</div>
-          </div>
-        </div>
-        `,
-      },
-      {
-        command: '',
-        outputHTML: `
-        <div class="terminal-output--item">
-          <div class="setup-section">
-            <div class="prompt-item message">Would you like to set writing goals?</div>
-            <div class="input">Yes</div>
-          </div>
-          
-      `,
-      },
-      {
-        command: '',
-        outputHTML: `
-                   <div class="terminal-output--item">
-          <div class="setup-section">
-            <div class="prompt-item message">How often would you like to write with rflect?</div>
-            <div class="input">Daily entries</div>
-          </div>
-</div>
-`,
-      },
-      {
-        command: '',
-        outputHTML: `
-                   <div class="terminal-output--item">
-          <div class="setup-section">
-          <div class="prompt-item message">How many entries would you like to write daily?</div>
-            <div class="input"><span class="number">1</span></div>
-          </div>
-</div>
-`,
-      },
-      {
-        command: '',
-        outputHTML: `
-                   <div class="terminal-output--item">
-          <div class="setup-section">
-            <div class="prompt-item message">How often would you like to track your word count?</div>
-            <div class="input">Weekly</div>
-          </div>
-</div>
-`,
-      },
-      {
-        command: '',
-        outputHTML: `
-                   <div class="terminal-output--item">
-          <div class="setup-section">
-            <div class="prompt-item message">How many words would you like to write weekly?</div>
-            <div class="input"><span class="number">2000</span></div>
-          </div>
-</div>
-`,
-      },
-      {
-        command: '',
-        outputHTML: `
-                  <div class="success-message">
-            <p class="message">✨ Welcome, <span class="command">Julia</span>!</p>
-            <p class="message">You will be writing in basic text inputs with rflect.</p>
-            <p class="message">Your goals:</p>
-            <ul>
-              <li>Write <span class="number">1</span> entry daily</li>
-              <li>Write <span class="number">2000</span> words weekly</li>
-            </ul>
-          </div>`,
-      },
-      {
-        command: '',
-        outputHTML: `<p class="message">Get started with:</p>
-            <ul>
-              <li><span class="command">rflect write</span> - Start your first reflection</li>
-              <li><span class="command">rflect show</span> - View your entries</li>
-              <li><span class="command">rflect stats</span> - Track your progress</li>
-            </ul>`,
+          <p class="heading">✨ Welcome, Julia!</p>
+          <p class="indent">Write <span class="number">1</span> entry daily</p>
+          <p class="indent">Write <span class="number">2000</span> words weekly</p>`,
       },
     ],
   },
   {
     id: 3,
-    title: 'Start your reflection',
-    description: 'Write with thoughtfully curated prompts',
+    title: 'Write a reflection',
+    description:
+      'Answer a thoughtfully curated prompt, log how you feel and tag what it was about.',
     includeScript: true,
     script: 'rflect write',
     terminal: [
       {
         command: 'rflect write',
         outputHTML: `
-        <div class="terminal-output--item">
-          <div class="writing-session">
-            <div class="prompt-item message">How are you feeling today?</div>
-            <div class="input"><span class="emoji">😌</span> peaceful</div>
-          </div>
-        </div>`,
+          <p class="prompt">? How are you feeling today?</p>
+          <p class="answer">😌 peaceful</p>
+          <p class="prompt">? What made you feel most alive today?</p>
+          <p class="answer muted">[Writing your reflection...]</p>
+          <p class="prompt">? Add tags (comma-separated) <span class="muted">[optional]</span></p>
+          <p class="answer">gratitude, mindfulness, nature</p>`,
       },
       {
         command: '',
         outputHTML: `
-        <div class="terminal-output--item">
-          <div class="writing-session">
-            <div class="prompt-item message">What made you feel most alive today?</div>
-            <div class="input">[Writing your reflection...]</div>
-          </div>
-        </div>`,
-      },
-      {
-        command: '',
-        outputHTML: `
-        <div class="terminal-output--item">
-          <div class="writing-session">
-            <div class="prompt-item message">Add tags (comma-separated) [optional]:</div>
-            <div class="input">gratitude, mindfulness, nature</div>
-          </div>
-        </div>`,
-      },
-      {
-        command: '',
-        outputHTML: `
-        <div class="terminal-output--item">
-            <div class="success-section">
-              <p class="message">✨ Your reflection has been saved!</p>
-              <p>Word Count: <span class="number">250</span></p>
-              <p>Time Spent Writing: <span class="number">15</span>m</p>
-              <p>🔥 <span class="number">3</span> day streak! Keep it up!</p>
-            </div>
-        </div>`,
+          <p class="heading">✨ Your reflection has been saved!</p>
+          <p class="indent">Word Count: <span class="number">250</span></p>
+          <p class="indent">Time Spent Writing: <span class="number">15</span>m</p>`,
       },
     ],
   },
   {
     id: 4,
-    title: 'Pre-defined prompts',
-    description: 'Browse through the current collection of writing prompts',
+    title: 'Browse prompts',
+    description:
+      'Look through the current collection of writing prompts before you start.',
     includeScript: true,
-    script: 'rflect prompts --all',
+    script: 'rflect prompts',
     terminal: [
       {
-        command: 'rflect prompts --all',
+        command: 'rflect prompts',
         outputHTML: `
-        <div class="terminal-output--item">
-          <h3 class="message">All Available Prompts</h3>
-          <div class="prompts-list">
-            <div class="prompt-item">
-              <span class="number">1</span>. What made you feel most alive today?
-            </div>
-          </div>
-        </div>
-      `,
-      },
-      {
-        command: '',
-        outputHTML: `
-        <div class="terminal-output--item">
-          <div class="prompts-list">
-            <div class="prompt-item">
-              <span class="number">2</span>. What's something you're looking forward to, and why?
-            </div>
-          </div>
-        </div>
-      `,
-      },
-      {
-        command: '',
-        outputHTML: `
-        <div class="terminal-output--item">
-          <div class="prompts-list">
-            <div class="prompt-item">
-              <span class="number">3</span>. What's a challenge you faced today and how did you handle it?
-            </div>
-          </div>
-        </div>
-      `,
-      },
-      {
-        command: '',
-        outputHTML: `
-        <div class="terminal-output--item">
-          <div class="prompts-list">
-            <div class="prompt-item">
-              <span class="number">4</span>. Maya Angelou said <span class="description">"There is no greater agony than bearing an untold story inside you."</span> What's a story you need to tell?
-            </div>
-          </div>
-        </div>
-      `,
-      },
-      {
-        command: '',
-        outputHTML: `
-        <div class="terminal-output--item">
-          <div class="prompts-list">
-            <div class="prompt-item">
-              <span class="number">5</span>. Name three small things that brought you joy today.
-            </div>
-          </div>
-        </div>
-      `,
-      },
-      {
-        command: '',
-        outputHTML: `
-        <div class="terminal-output--item">
-          <div class="prompts-list">
-            <div class="prompt-item">
-              <span class="number">6</span>. How are you different from who you were six months ago?
-            </div>
-          </div>
-        </div>
-      `,
-      },
-      {
-        command: '',
-        outputHTML: `
-        <div class="terminal-output--item">
-          <div class="prompts-list">
-            <div class="prompt-item">
-              <span class="number">7</span>. What skill are you currently developing?
-            </div>
-          </div>
-        </div>
-      `,
-      },
-      {
-        command: '',
-        outputHTML: `
-        <div class="terminal-output--item">
-          <div class="prompts-list">
-            <div class="prompt-item">
-              <span class="number">8</span>. Reflect on a friendship that has enriched your life.
-            </div>
-          </div>
-        </div>
-      `,
-      },
-      {
-        command: '',
-        outputHTML: `
-        <div class="terminal-output--item">
-          <div class="prompts-list">
-            <div class="prompt-item">
-              <span class="number">9</span>. What comfort do you have today that you didn't have a year ago?
-            </div>
-          </div>
-        </div>
-      `,
-      },
-      {
-        command: '',
-        outputHTML: `
-        <div class="terminal-output--item">
-          <div class="prompts-list">
-            <div class="prompt-item">
-              <span class="number">10</span>. Virginia Woolf wrote, <span class="description">'Lock up your libraries if you like; but there is no gate, no lock, no bolt that you can set upon the freedom of my mind.'</span> What does mental freedom mean to you?
-            </div>
-          </div>
-        </div>
-      `,
-      },
-      {
-        command: '',
-        outputHTML: `<div class="more-message">[...more prompts available]</div>`,
-      },
-      {
-        command: '',
-        outputHTML: `<p class="message">Use <span class="command">rflect write</span> to get a random prompt and start your reflection.</p>`,
+          <p class="output"><span class="number">1</span>. What made you feel most alive today?</p>
+          <p class="output"><span class="number">2</span>. What's something you're looking forward to, and why?</p>
+          <p class="output"><span class="number">3</span>. What's a challenge you faced today and how did you handle it?</p>
+          <p class="output"><span class="number">4</span>. Maya Angelou said <em>"There is no greater agony than bearing an untold story inside you."</em> What's a story you need to tell?</p>
+          <p class="output"><span class="number">5</span>. Name three small things that brought you joy today.</p>
+          <p class="output"><span class="number">6</span>. How are you different from who you were six months ago?</p>
+          <p class="output"><span class="number">7</span>. What skill are you currently developing?</p>
+          <p class="muted">...and more</p>`,
       },
     ],
   },
   {
     id: 5,
-    title: 'Writing patterns',
-    description: 'See your writing stats over time',
+    title: 'Track your moods',
+    description:
+      'See how your moods line up with your writing habits and what you write about.',
+    includeScript: true,
+    script: 'rflect moods --calendar',
+    terminal: [
+      {
+        command: 'rflect moods --calendar',
+        outputHTML: moodCalendar.calendar,
+      },
+      {
+        command: '',
+        outputHTML: moodCalendar.summary,
+      },
+    ],
+  },
+  {
+    id: 6,
+    title: 'See your writing stats',
+    description: 'Streaks, word counts and time spent, all in one view.',
     includeScript: true,
     script: 'rflect stats --all',
     terminal: [
       {
         command: 'rflect stats --all',
         outputHTML: `
-        <div class="terminal-output--item">
-          <h3 class="message">Entry Statistics</h3>
-          <div class="stats-section">
-            <div class="stat-item">
-              Account Created: <span class="date">Jan <span class="number">07</span>, <span class="number">2025</span></span>
-            </div>
-            <div class="stat-item">
-              Total Entries Written: <span class="number">15</span>
-            </div>
-            <div class="stat-item">
-              Total Words Written: <span class="number">3,750</span>
-            </div>
-            <div class="stat-item">
-              Average Words per Entry: <span class="number">250</span>
-            </div>
-            <div class="stat-item">
-              Latest Entry: <span class="date">Jan <span class="number">07</span>, <span class="number">2025</span></span>
-            </div>
-          </div>
-        </div>
-      `,
+          <p class="heading">Entry Statistics</p>
+          <p class="indent">Total Entries Written: <span class="number">15</span></p>
+          <p class="indent">Total Words Written: <span class="number">3,750</span></p>
+          <p class="indent">Average Words per Entry: <span class="number">250</span></p>`,
       },
       {
         command: '',
         outputHTML: `
-        <div class="terminal-output--item">
-            <h3 class="message">Writing Streak</h3>
-          <div class="stats-section">
-            <div class="stat-item">
-              Current Streak: <span class="number">5</span> days
-            </div>
-            <div class="stat-item">
-              Longest Streak: <span class="number">7</span> days
-            </div>
-          </div>
-        </div>
-      `,
+          <p class="heading">Writing Streak</p>
+          <p class="indent">Current Streak: <span class="number">5</span> days</p>
+          <p class="indent">Longest Streak: <span class="number">7</span> days</p>`,
       },
       {
         command: '',
         outputHTML: `
-        <div class="terminal-output--item">
-            <h3 class="message">Time Statistics</h3>
-          <div class="stats-section">
-            <div class="stat-item">
-              Days Since Creation: <span class="number">30</span>
-            </div>
-            <div class="stat-item">
-              Total Time Writing: <span class="number">5</span>h <span class="number">30</span>m
-            </div>
-            <div class="stat-item">
-              Average Time per Entry: <span class="number">22</span>m
-            </div>
-          </div>
-        </div>
-      `,
-      },
-    ],
-  },
-  {
-    id: 6,
-    title: 'Track your emotional journey',
-    description:
-      'See how your moods correlate to your writing habits and content',
-    includeScript: true,
-    script: 'rflect moods --calendar',
-    terminal: [
-      {
-        command: 'rflect moods --calendar',
-        outputHTML: `
-        <div class="terminal-output--item">
-          <h3 class="message"><span class="emoji">🥰 loved Calendar:</span> <span class="date">January <span class="number">2025</span></span></h3>
-          <div class="calendar-grid">
-            <div class="calendar-header">Su  Mo  Tu  We  Th  Fr  Sa</div>
-<div class="calendar-week">
-  <span class="number faded">29</span>   
-  <span class="number faded">30</span>   
-  <span class="number faded">31</span>   
-  <span class="number">1</span>   
-  <span class="number">2</span>   
-  <span class="number">3</span>   
-  <span class="number">4</span>
-</div>
-<div class="calendar-week">
-  <span class="number">5</span>   
-  <span class="number">6</span>   
-  <span class="emoji">🥰</span>  
-  <span class="number">8</span>   
-  <span class="number">9</span>   
-  <span class="emoji">🥰</span>  
-  <span class="number">11</span>
-</div>
-<div class="calendar-week">
-  <span class="number">12</span>  
-  <span class="emoji">🥰</span>  
-  <span class="number">14</span>  
-  <span class="number">15</span>  
-  <span class="emoji">🥰</span>  
-  <span class="number">17</span>  
-  <span class="number">18</span>
-</div>
-<div class="calendar-week">
-  <span class="number">19</span>  
-  <span class="emoji">🥰</span>  
-  <span class="number">21</span>  
-  <span class="number">22</span>  
-  <span class="emoji">🥰</span>  
-  <span class="emoji">🥰</span>  
-  <span class="number">25</span>
-</div>
-<div class="calendar-week">
-  <span class="number">26</span>  
-  <span class="number">27</span>  
-  <span class="number">28</span>  
-  <span class="number">29</span>  
-  <span class="number">30</span>  
-  <span class="number">31</span>  
-  <span class="number faded">1</span>
-</div>
-          </div>
-        </div>
-      `,
-      },
-      {
-        command: '',
-        outputHTML: `
-          <div class="terminal-output--item">
-            <p>You felt <span class="emoji">🥰 loved </span> on <span class="number">6</span> days this month.</p>
-</div>`,
+          <p class="heading">Time Statistics</p>
+          <p class="indent">Total Time Writing: <span class="number">5</span>h <span class="number">30</span>m</p>
+          <p class="indent">Average Time per Entry: <span class="number">22</span>m</p>`,
       },
     ],
   },
   {
     id: 7,
-    title: 'Customize your rflect account',
-    description: 'Adjust previously set goals and settings or start over',
+    title: 'Customize your account',
+    description: 'Adjust goals and settings you set earlier, or start over.',
     includeScript: true,
     script: 'rflect config',
     terminal: [
       {
         command: 'rflect config',
         outputHTML: `
-  <div class="terminal-output--item">
-      <h3 class="message">Available options:</h3>
-</div>
-`,
+          <p class="output">Available options:</p>
+          <div class="command-item"><span class="command">--name</span><span class="description">Set your display name</span></div>
+          <div class="command-item"><span class="command">--show</span><span class="description">View current settings</span></div>
+          <div class="command-item"><span class="command">--install</span><span class="description">Reinstall rflect configuration</span></div>
+          <div class="command-item"><span class="command">--editor</span><span class="description">Toggle system editor usage</span></div>`,
       },
       {
         command: '',
         outputHTML: `
-  <div class="terminal-output--item">
-<div class="config-options">
-  <div class="option-item">
-    <span class="command">rflect config --name</span>
-    <span class="description">Set your display name</span>
-  </div>
-</div>
-</div>
-`,
-      },
-      {
-        command: '',
-        outputHTML: `
-  <div class="terminal-output--item">
-<div class="config-options">
-  <div class="option-item">
-    <span class="command">rflect config --show</span>
-    <span class="description">View current settings</span>
-  </div>
-`,
-      },
-      {
-        command: '',
-        outputHTML: `
-  <div class="terminal-output--item">
-<div class="config-options">
-  <div class="option-item">
-    <span class="command">rflect config --install</span>
-    <span class="description">Reinstall rflect configuration</span>
-  </div>
-</div>
-</div>
-`,
-      },
-      {
-        command: '',
-        outputHTML: `
-  <div class="terminal-output--item">
-<div class="config-options">
-  <div class="option-item">
-    <span class="command">rflect config --editor</span>
-    <span class="description">Toggle system editor usage</span>
-  </div>
-</div>
-</div>
-`,
-      },
-      {
-        command: '',
-        outputHTML: `
-  <div class="terminal-output--item">
-<h3 class="message">Goal configuration:</h3>
-<div class="goal-options">
-  <div class="option-item">
-    <span class="command">rflect config --goal</span>
-    <span class="description">Set writing goals</span>
-  </div>
-</div>
-</div>
-`,
-      },
-      {
-        command: '',
-        outputHTML: `
-          <div class="option-details message">
-    Options: <span class="command">-t entries|words -f daily|weekly|monthly -v &lt;number&gt;</span>
-  </div>
-`,
+          <p class="heading">Goal configuration:</p>
+          <div class="command-item"><span class="command">--goal</span><span class="description">Set writing goals</span></div>
+          <p class="indent muted">-t entries|words -f daily|weekly|monthly -v &lt;number&gt;</p>`,
       },
     ],
   },
   {
     id: 8,
-    title: 'Upcoming features',
-    description: 'See what features are coming to rflect in future updates',
+    title: "What's coming next",
+    description: 'A peek at the features planned for future updates.',
     includeScript: true,
     script: 'rflect upcoming',
     terminal: [
       {
         command: 'rflect upcoming',
         outputHTML: `
-        <div class="terminal-output--item">
-          <p class="message">Coming soon to rflect:</p>
-        </div>
-      `,
-      },
-      {
-        command: '',
-        outputHTML: `
-        <div class="terminal-output--item">
-          <div class="commands-section">
-            <strong class="command-header">FEATURES:</strong>
-          </div>
-        </div>
-      `,
-      },
-      {
-        command: '',
-        outputHTML: `
-        <div class="terminal-output--item">
-          <div class="commands-section">
-            <div class="command-item">
-              <span class="command">rflect theme</span>
-              <span class="description">Personalize your journaling experience with themes</span>
-            </div>
-          </div>
-        </div>`,
-      },
-      {
-        command: '',
-        outputHTML: `<div class="terminal-output--item">
-          <div class="commands-section">
-            <div class="command-item">
-              <span class="command">rflect backup</span>
-              <span class="description">Keep your reflections safe with cloud backup</span>
-            </div>
-          </div>
-        </div>`,
-      },
-      {
-        command: '',
-        outputHTML: `
-        <div class="terminal-output--item">
-          <div class="commands-section">
-            <div class="command-item">
-              <span class="command">rflect search &lt;term&gt;</span>
-              <span class="description">Find specific moments in your journey</span>
-            </div>
-          </div>
-        </div>
-`,
-      },
-      {
-        command: '',
-        outputHTML: `
-        <div class="terminal-output--item">
-          <div class="commands-section">
-            <div class="command-item">
-              <span class="command">rflect remind</span>
-              <span class="description">Set gentle reminders for your reflection practice</span>
-            </div>
-          </div>
-        </div>
-`,
-      },
-      {
-        command: '',
-        outputHTML: `
-        <div class="terminal-output--item">
-          <div class="commands-section">
-            <div class="command-item">
-              <span class="command">rflect encrypt</span>
-              <span class="description">Add extra privacy to selected entries</span>
-            </div>
-          </div>
-        </div>
-`,
-      },
-      {
-        command: '',
-        outputHTML: `
-        <div class="terminal-output--item">
-          <div class="commands-section">
-            <div class="command-item">
-              <span class="command">rflect analyze</span>
-              <span class="description">Gain insights into your reflection patterns with AI</span>
-            </div>
-          </div>
-        </div>
-`,
+          <p class="output">Coming soon to rflect:</p>
+          <div class="command-item"><span class="command">rflect theme</span><span class="description">Personalize your journaling experience</span></div>
+          <div class="command-item"><span class="command">rflect backup</span><span class="description">Keep your reflections safe with cloud backup</span></div>
+          <div class="command-item"><span class="command">rflect search</span><span class="description">Find specific moments in your journey</span></div>
+          <div class="command-item"><span class="command">rflect remind</span><span class="description">Set gentle reminders to reflect</span></div>
+          <div class="command-item"><span class="command">rflect encrypt</span><span class="description">Add extra privacy to selected entries</span></div>
+          <div class="command-item"><span class="command">rflect analyze</span><span class="description">Insights into your reflection patterns</span></div>`,
       },
     ],
   },

@@ -19,7 +19,6 @@
 - Font Awesome for icons
 - GitHub API for repository star count
 - NPM API for current version
-- Ipify API to display visitor's IP address
 
 ## Features
 
@@ -40,14 +39,16 @@
 - **Live GitHub Star Counter**: Real-time display of repository stars
 - **Live NPM Version**: Real-time display of the current version code for the package
 - **Interactive Command Buttons**: One-click copy functionality for each feature's command, starting with the NPM install script provided in the topmost section of the page
-- **Custom Modal Component**: Appears on smaller screens, prompting users to view the website on a larger screen for a better experience
+- **Progress Rail**: Shows which of the 8 feature windows you're on, and jumps to any of them
+- **Responsive Layout**: Feature windows stack with their terminal underneath on smaller screens
 
 ## Key Concepts
 
 - Uses Framer Motion with variant objects for customized, sequenced animations
 - Uses Framer Motion for scroll-based triggers for animations, in sync with the native CSS scroll-snapping feature
 - Uses React state and hooks to manage dynamic content rendering
-- Prop drilling used to pass data and callback functions down the component tree (between Feature and Terminal components) to enable the terminal outputs based on the specific feature that is being showcased (which is tracked by scroll position)
+- Each feature window renders its own Terminal component from the feature data, and animates in when it scrolls into view
+- Respects `prefers-reduced-motion` through Framer Motion's `MotionConfig`
 - Integrates with GitHub API for live star count
 - Implements native clipboard API for one-click command copying
 

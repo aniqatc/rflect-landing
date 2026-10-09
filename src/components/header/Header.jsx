@@ -4,8 +4,10 @@ import Title from './Title';
 function Header() {
   return (
     <header>
-      <Title>rflect</Title>
-      <StatusBar />
+      <div className="container header-inner">
+        <Title>rflect</Title>
+        <StatusBar />
+      </div>
     </header>
   );
 }

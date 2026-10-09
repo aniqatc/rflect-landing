@@ -1,12 +1,12 @@
 import TerminalBar from './TerminalBar';
 import TerminalContent from './TerminalContent';
 
-function Terminal({ currentFeatureId }) {
+function Terminal({ title, terminal }) {
   return (
-    <section className="terminal">
-      <TerminalBar />
-      <TerminalContent currentFeatureId={currentFeatureId} />
-    </section>
+    <figure className="terminal">
+      <TerminalBar title={title} />
+      <TerminalContent terminal={terminal} />
+    </figure>
   );
 }
 

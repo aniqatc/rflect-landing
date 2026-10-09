@@ -1,5 +1,9 @@
 function Title({ children }) {
-  return <h1 className="title">{children}</h1>;
+  return (
+    <a href="#top" className="title">
+      {children}
+    </a>
+  );
 }
 
 export default Title;

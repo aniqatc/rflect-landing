@@ -4,7 +4,7 @@ import { faClipboard } from '@fortawesome/free-regular-svg-icons';
 import { faCheck } from '@fortawesome/free-solid-svg-icons';
 import { motion, AnimatePresence } from 'framer-motion';
 
-function ScriptButton({ children }) {
+function ScriptButton({ children, className = '' }) {
   const [isCopied, setIsCopied] = useState(false);
 
   function handleCopy() {
@@ -14,11 +14,21 @@ function ScriptButton({ children }) {
   }
 
   return (
-    <button className="script-button" onClick={handleCopy}>
-      <p>{children}</p>
-      <span className={isCopied ? 'show-copied' : 'hide-copied'}>Copied!</span>
+    <button
+      type="button"
+      className={`script-button ${className}`}
+      onClick={handleCopy}
+      title="Copy to clipboard"
+    >
+      <span>
+        <span className="script-button--prompt">$</span> {children}
+      </span>
+      {/* aria-live so screen readers hear "Copied!" */}
+      <span className="script-button--copied" aria-live="polite">
+        {isCopied ? 'Copied!' : ''}
+      </span>
       <AnimatePresence mode="wait">
-        <motion.div
+        <motion.span
           key={isCopied ? 'copied' : 'clipboard'}
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
@@ -29,7 +39,7 @@ function ScriptButton({ children }) {
             icon={isCopied ? faCheck : faClipboard}
             className={`script-button--icon ${isCopied ? 'copied' : ''}`}
           />
-        </motion.div>
+        </motion.span>
       </AnimatePresence>
     </button>
   );
