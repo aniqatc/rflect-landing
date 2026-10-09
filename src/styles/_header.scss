@@ -61,10 +61,12 @@ header {
         }
       }
 
+      // No border on focus, just brighter text with an underline
       &:focus-visible {
-        outline: 2px solid $accent;
-        outline-offset: 4px;
-        border-radius: 4px;
+        outline: none;
+        color: $text-primary;
+        text-decoration: underline;
+        text-underline-offset: 4px;
       }
 
       &--hide-sm {
