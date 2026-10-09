@@ -1,61 +1,62 @@
 import { useState, useEffect } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCircle, faStar } from '@fortawesome/free-solid-svg-icons';
+import { faStar } from '@fortawesome/free-regular-svg-icons';
 import { faGithub } from '@fortawesome/free-brands-svg-icons';
 
 function StatusBar() {
-  const [stars, setStars] = useState('00');
-  const [version, setVersion] = useState('2.0.0');
+  const [stars, setStars] = useState(null);
+  const [version, setVersion] = useState(null);
 
   useEffect(() => {
-    async function fetchPackageInfo() {
-      const ghResponse = await fetch(
-        'https://api.github.com/repos/aniqatc/rflect-cli'
-      );
-      const ghData = await ghResponse.json();
-      const count = ghData.stargazers_count;
-      setStars(count.toString().padStart(2, '0'));
+    // Fetched separately so one failing doesn't block the other
+    fetch('https://api.github.com/repos/aniqatc/rflect-cli')
+      .then((response) => response.json())
+      .then((ghData) => setStars(ghData.stargazers_count))
+      .catch(() => {});
 
-      const npmResponse = await fetch(
-        'https://registry.npmjs.org/rflect/latest'
-      );
-      const npmData = await npmResponse.json();
-      setVersion(npmData.version);
-    }
-    fetchPackageInfo();
+    fetch('https://registry.npmjs.org/rflect/latest')
+      .then((response) => response.json())
+      .then((npmData) => setVersion(npmData.version))
+      .catch(() => {});
   }, []);
 
   return (
-    <div className="status-bar">
+    <nav className="status-bar" aria-label="Project links">
       <a
         href="https://www.npmjs.com/package/rflect"
         target="_blank"
-        className="status-bar__item"
+        rel="noopener noreferrer"
+        className="status-bar__item status-bar__item--hide-sm"
       >
-        <FontAwesomeIcon icon={faCircle} className="status-bar__item--circle" />
-        <p>
-          Active <span>v{version}</span>
-        </p>
+        <span className="status-bar__dot"></span>
+        {version ? `v${version}` : 'npm'}
       </a>
       <a
         href="https://github.com/aniqatc/rflect-cli"
         target="_blank"
-        className="status-bar__item"
+        rel="noopener noreferrer"
+        className="status-bar__item status-bar__item--hide-sm"
       >
-        <FontAwesomeIcon icon={faStar} className="status-bar__item--star" />
-        <p>
-          Stars <span>{stars}</span>
-        </p>
+        <FontAwesomeIcon icon={faStar} />
+        {/* Star count only shows once it has loaded */}
+        {typeof stars === 'number' ? (
+          <span>
+            Stars <span className="status-bar__count">{stars}</span>
+          </span>
+        ) : (
+          'Star on GitHub'
+        )}
       </a>
       <a
         href="https://github.com/aniqatc/rflect-cli"
         target="_blank"
-        className="status-bar__item"
+        rel="noopener noreferrer"
+        className="status-bar__item status-bar__item--pill"
       >
-        <FontAwesomeIcon icon={faGithub} className="status-bar__item--gh" />
-        <p>Repository</p>
+        <FontAwesomeIcon icon={faGithub} />
+        Repository
       </a>
-    </div>
+    </nav>
   );
 }
 

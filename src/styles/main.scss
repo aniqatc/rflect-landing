@@ -1,9 +1,9 @@
 @use 'variables' as *;
 @use 'header';
+@use 'hero';
 @use 'terminal';
 @use 'features';
 @use 'footer';
-@use 'modal';
 
 * {
   margin: 0;
@@ -14,8 +14,7 @@
 body {
   background: $bg-primary;
   color: $text-primary;
-  font-family: 'IBM Plex Mono', 'ui-monospace', 'SFMono-Regular', 'Menlo',
-    'Monaco', 'Consolas', 'Liberation Mono', 'Courier New', 'monospace';
+  font-family: $font-mono;
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
@@ -23,22 +22,99 @@ body {
   overflow-x: hidden;
 }
 
+// Scroll snapping (hero, each feature window, call to action)
 .scroll-wrapper {
   height: 100vh;
+  height: 100dvh;
   overflow-y: auto;
   scroll-snap-type: y mandatory;
+  scroll-padding-top: $header-height;
+  scroll-behavior: smooth;
   position: relative;
 
-  @media (max-width: $sm-breakpoint) {
-    &.no-scroll {
-      overflow: hidden;
-    }
+  // Free scrolling on smaller screens
+  @media (max-width: $md-breakpoint) {
+    scroll-snap-type: none;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    scroll-behavior: auto;
   }
 }
 
 .container {
   max-width: $container-width;
   margin: 0 auto;
-  padding: 0 1rem;
+  padding: 0 32px;
   position: relative;
+
+  @media (max-width: $sm-breakpoint) {
+    padding: 0 20px;
+  }
+}
+
+// Copy button (hero, features, call to action)
+.script-button {
+  font-family: inherit;
+  font-size: 14px;
+  color: $text-primary;
+  background-color: $bg-button;
+  border: 1px solid $border-strong;
+  border-radius: 10px;
+  padding: 14px 18px;
+  min-height: 48px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: border-color 200ms ease-out;
+
+  &:hover {
+    border-color: $text-dim;
+  }
+
+  &:focus-visible {
+    outline: 2px solid $accent;
+    outline-offset: 2px;
+  }
+
+  &--prompt {
+    color: $accent;
+  }
+
+  &--copied {
+    font-size: 11px;
+    color: $text-secondary;
+    margin-left: auto;
+  }
+
+  &--icon {
+    font-size: 15px;
+    color: $text-secondary;
+
+    &.copied {
+      color: $accent;
+    }
+  }
+
+  &--small {
+    font-size: 13px;
+    padding: 10px 14px;
+    min-height: 44px;
+    border-radius: 8px;
+  }
+
+  &--large {
+    font-size: 16px;
+    padding: 18px 24px;
+    min-height: 56px;
+    border-radius: 12px;
+    gap: 24px;
+
+    @media (max-width: $sm-breakpoint) {
+      font-size: 14px;
+      padding: 14px 18px;
+    }
+  }
 }

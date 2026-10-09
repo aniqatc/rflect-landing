@@ -1,19 +1,20 @@
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCode, faHeart } from '@fortawesome/free-solid-svg-icons';
-
 function Footer() {
   return (
     <footer className="footer">
-      <FontAwesomeIcon icon={faCode} className="code-icon" /> Built with{' '}
-      <FontAwesomeIcon icon={faHeart} className="heart-icon" /> by{' '}
-      <a
-        href="https://github.com/aniqatc"
-        target="_blank"
-        rel="noopener noreferrer"
-        className="footer-link"
-      >
-        Aniqa
-      </a>
+      <div className="container footer-inner">
+        <span className="footer-title">rflect</span>
+        <p>
+          Built by{' '}
+          <a
+            href="https://aniqa.dev"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="footer-link"
+          >
+            Aniqa
+          </a>
+        </p>
+      </div>
     </footer>
   );
 }

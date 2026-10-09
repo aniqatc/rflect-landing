@@ -1,20 +1,13 @@
 import { motion } from 'framer-motion';
-import { format } from 'date-fns';
 import TerminalOutput from './TerminalOutput.jsx';
 import TerminalInput from './TerminalInput.jsx';
-import { features } from '../../data/features.js';
 
-const initialDateTime = format(new Date(), 'EEE, MMM d. HH:mm:ss');
-function TerminalContent({ currentFeatureId = 1 }) {
-  const terminalContentToShow = features.find(
-    (feature) => feature.id === currentFeatureId
-  );
-
+function TerminalContent({ terminal }) {
   const terminalVariant = {
     hidden: { opacity: 1 },
     visible: {
       transition: {
-        staggerChildren: 0.4,
+        staggerChildren: 0.25,
       },
     },
   };
@@ -22,48 +15,41 @@ function TerminalContent({ currentFeatureId = 1 }) {
   const terminalItemVariants = {
     hidden: {
       opacity: 0,
-      y: 40,
-      filter: 'blur(10px)',
+      y: 16,
+      filter: 'blur(6px)',
     },
     visible: {
       opacity: 1,
       y: 0,
       filter: 'blur(0px)',
       transition: {
-        duration: 0.5,
+        duration: 0.4,
       },
     },
   };
 
+  // Plays once when the terminal scrolls into view
   return (
     <motion.div
-      key={currentFeatureId}
       className="terminal-content"
       variants={terminalVariant}
       initial="hidden"
-      animate="visible"
+      whileInView="visible"
+      viewport={{ once: true, amount: 0.3 }}
     >
-      <motion.p className="initial-date" variants={terminalItemVariants}>
-        Last Login: {initialDateTime}
-      </motion.p>
+      {terminal.map((content, index) => [
+        content.command && (
+          <motion.div key={`input-${index}`} variants={terminalItemVariants}>
+            <TerminalInput>{content.command}</TerminalInput>
+          </motion.div>
+        ),
+        <motion.div key={`output-${index}`} variants={terminalItemVariants}>
+          <TerminalOutput outputHTML={content.outputHTML} />
+        </motion.div>,
+      ])}
 
-      <div className="terminal-content--item">
-        {terminalContentToShow?.terminal?.map((content, index) => [
-          content.command && (
-            <motion.div key={`input-${index}`} variants={terminalItemVariants}>
-              <TerminalInput>{content.command}</TerminalInput>
-            </motion.div>
-          ),
-          <motion.div key={`output-${index}`} variants={terminalItemVariants}>
-            <TerminalOutput outputHTML={content.outputHTML} />
-          </motion.div>,
-        ])}
-      </div>
-
-      <motion.div
-        className="terminal-content--item"
-        variants={terminalItemVariants}
-      >
+      {/* Empty prompt with blinking cursor */}
+      <motion.div variants={terminalItemVariants}>
         <TerminalInput />
       </motion.div>
     </motion.div>

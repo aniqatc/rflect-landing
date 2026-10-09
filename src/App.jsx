@@ -1,23 +1,23 @@
-import { useState } from 'react';
+import { MotionConfig } from 'framer-motion';
 import { Header } from './components/header';
-import { Terminal } from './components/terminal';
+import { Hero } from './components/hero';
 import { FeatureSection } from './components/features';
-import { Footer } from './components/footer';
-import { Modal } from './components/extras';
+import { CallToAction, Footer } from './components/footer';
 
 function App() {
-  const [featureId, setFeatureId] = useState(1);
-
+  // reducedMotion="user" turns animations off for visitors who prefer less motion
   return (
-    <div className="scroll-wrapper">
-      <div className="container">
+    <MotionConfig reducedMotion="user">
+      <div className="scroll-wrapper">
         <Header />
-        <FeatureSection onFeatureChange={setFeatureId} />
-        <Terminal currentFeatureId={featureId} />
+        <main>
+          <Hero />
+          <FeatureSection />
+          <CallToAction />
+        </main>
+        <Footer />
       </div>
-      <Modal />
-      <Footer />
-    </div>
+    </MotionConfig>
   );
 }
 

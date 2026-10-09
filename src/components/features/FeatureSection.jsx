@@ -1,40 +1,53 @@
 import { motion } from 'framer-motion';
 import { features } from '../../data/features.js';
 import { ScriptButton } from '../extras/index.js';
+import { Terminal } from '../terminal/index.js';
+import ProgressRail from './ProgressRail.jsx';
 
-function FeatureSection({ onFeatureChange }) {
+function FeatureSection() {
+  const total = features.length.toString().padStart(2, '0');
+
   return (
-    <div className="feature-container">
-      {features.map((feature) => {
-        return (
-          <motion.div
-            key={feature.id}
-            className="feature-item"
-            initial={{ opacity: 0, scale: 0.2 }}
-            whileInView={{
-              opacity: 1,
-              scale: 1,
-              transition: {
-                type: 'spring',
-                stiffness: 60,
-                duration: 1,
-              },
-            }}
-            viewport={{
-              once: false,
-              amount: 0.8,
-            }}
-            onViewportEnter={() => onFeatureChange(feature.id)}
-          >
-            <strong className="feature-item--title">{feature.title}</strong>
-            <p className="feature-item--description">{feature.description}</p>
-            {feature.includeScript ? (
-              <ScriptButton>{feature.script}</ScriptButton>
-            ) : null}
-          </motion.div>
-        );
-      })}
-    </div>
+    <section id="walkthrough" className="feature-container">
+      <div className="container">
+        {features.map((feature) => {
+          return (
+            <article
+              key={feature.id}
+              id={`feature-${feature.id}`}
+              className="feature-item"
+            >
+              <motion.div
+                className="feature-item--text"
+                initial={{ opacity: 0, y: 24 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, ease: 'easeOut' }}
+                viewport={{ once: true, amount: 0.5 }}
+              >
+                <div className="feature-item--intro">
+                  <p className="feature-item--count">
+                    How it works ·{' '}
+                    <span>{feature.id.toString().padStart(2, '0')}</span> /{' '}
+                    {total}
+                  </p>
+                  <h2 className="feature-item--title">{feature.title}</h2>
+                  <p className="feature-item--description">
+                    {feature.description}
+                  </p>
+                  {feature.includeScript ? (
+                    <ScriptButton className="script-button--small">
+                      {feature.script}
+                    </ScriptButton>
+                  ) : null}
+                </div>
+                <ProgressRail currentId={feature.id} />
+              </motion.div>
+              <Terminal title={feature.script} terminal={feature.terminal} />
+            </article>
+          );
+        })}
+      </div>
+    </section>
   );
 }
 

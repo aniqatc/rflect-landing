@@ -1,31 +1,37 @@
 // Colors
-$bg-primary: #121212;
-$bg-terminal: #000000;
-$bg-gray-primary: #2b2b2b;
-$bg-gray-secondary: #222222;
-$text-primary: #d9d9d9;
-$text-secondary: #aaaaaa;
+$bg-primary: #131210;
+$bg-secondary: #161513;
+$bg-terminal: #0e0d0c;
+$bg-input: #171512;
+$bg-button: #1e1c19;
+
+// Borders
+$border-subtle: #211f1c;
+$border-primary: #2a2724;
+$border-strong: #3a352f;
+
+// Text
+$text-heading: #f4eee4;
+$text-primary: #ece6dc;
+$text-soft: #c9c0b4;
+$text-secondary: #a69e93;
+$text-muted: #8a8278;
+$text-dim: #6e675f;
+$text-faint: #4a453f;
+
+// Accent (change this one to re-theme the whole site)
+$accent: #e5a85a;
+
+// Fonts
+$font-mono:
+  'IBM Plex Mono', ui-monospace, 'SFMono-Regular', 'Menlo', 'Consolas',
+  monospace;
+$font-serif: 'Newsreader', 'Georgia', serif;
 
 // Layout
-$container-width: 1000px;
-$terminal-height: 500px;
-
-// Icons
-$circle: #15af18;
-$star: #fcff3e;
-$gh: #9d73ff;
-
-// Terminal text
-$terminal-dot-colors: #ff3b3b, #ffbc5c, #00c853;
-$terminal-output-primary: #62bdf5;
-$terminal-output-em: #b4def6;
-$terminal-user-path: #64b5f6;
-$terminal-user-input: #c5cc9c;
-$terminal-numbers: #fcff3e;
-$terminal-date: $terminal-numbers;
-$terminal-command: $terminal-output-em;
-$terminal-message: #edccff;
-$terminal-more: #c4c4c4;
+$container-width: 1160px;
+$header-height: 72px;
+$terminal-height: 452px;
 
 // Breakpoints
 $xs-breakpoint: 390px;

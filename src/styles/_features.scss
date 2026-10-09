@@ -1,106 +1,151 @@
 @use 'variables' as *;
 
 .feature-container {
+  background-color: $bg-secondary;
+  border-top: 1px solid $border-subtle;
+  border-bottom: 1px solid $border-subtle;
+
   .feature-item {
-    margin-right: auto;
-    height: calc(100vh - 100px);
+    height: calc(100vh - #{$header-height});
+    height: calc(100dvh - #{$header-height});
+    min-height: 600px;
     display: flex;
-    justify-content: center;
-    flex-direction: column;
-    max-width: 330px;
-    scroll-snap-align: center;
+    align-items: center;
+    gap: 72px;
+    padding: 48px 0;
+    scroll-snap-align: start;
+    scroll-snap-stop: always;
 
+    // Stacked windows on smaller screens
     @media (max-width: $md-breakpoint) {
-      align-items: center;
-      margin: 0 auto;
-      justify-content: flex-start;
-      padding-top: 170px;
+      height: auto;
+      min-height: 0;
+      flex-direction: column;
+      align-items: stretch;
+      gap: 28px;
+      padding: 56px 0;
 
-      &:first-of-type {
-        padding-top: 210px;
+      & + .feature-item {
+        border-top: 1px solid $border-subtle;
       }
     }
 
-    @media (max-width: $sm-breakpoint) {
-      padding-top: 0;
-      justify-content: center;
+    &--text {
+      flex: 1 1 320px;
+      min-width: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 32px;
 
-      &:first-of-type {
-        padding-top: 100px;
+      @media (max-width: $md-breakpoint) {
+        flex-basis: auto;
       }
+    }
 
-      &:last-of-type {
-        padding-bottom: 48px;
+    &--intro {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    &--count {
+      font-size: 12px;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: $text-muted;
+
+      span {
+        color: $accent;
       }
     }
 
     &--title {
-      font-size: 16px;
+      font-family: $font-serif;
+      font-weight: 400;
+      font-size: clamp(32px, 4vw, 40px);
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+      color: $text-heading;
     }
 
     &--description {
-      margin-top: 4px;
       font-size: 14px;
-
-      @media (max-width: $md-breakpoint) {
-        text-align: center;
-      }
+      line-height: 1.75;
+      color: $text-secondary;
+      max-width: 380px;
     }
 
     .script-button {
-      font-family: inherit;
-      max-width: 95%;
-      min-width: 290px;
-      font-size: 13px;
-      color: $text-secondary;
-      border: 1px solid #4c4c4c;
-      background-color: $bg-gray-secondary;
-      padding: 8px 16px;
-      border-radius: 6px;
+      align-self: flex-start;
+      margin-top: 6px;
+    }
+
+    .terminal {
+      flex: 1.4 1 520px;
+
+      .terminal-content {
+        min-height: $terminal-height;
+      }
+
+      @media (max-width: $md-breakpoint) {
+        flex-basis: auto;
+
+        .terminal-content {
+          min-height: 0;
+        }
+      }
+    }
+  }
+
+  // Step list next to each window
+  .progress-rail {
+    list-style: none;
+    font-size: 12px;
+
+    @media (max-width: $md-breakpoint) {
+      display: none;
+    }
+
+    &__item {
       display: flex;
       align-items: center;
-      justify-content: space-between;
-      margin: 12px 0;
-      cursor: pointer;
-      white-space: nowrap;
-      transition: all 200ms ease-out;
-      outline: 0;
-
-      &:focus-visible {
-        outline: 1px solid #6b7280;
-      }
-
-      &:active {
-        outline: 1px solid #6b7280;
-        color: $text-primary;
-      }
+      gap: 14px;
+      padding: 5px 0;
+      color: $text-dim;
+      text-decoration: none;
+      transition: color 200ms ease;
 
       &:hover {
         color: $text-primary;
       }
 
-      &--icon {
-        font-size: 16px;
-        transition: all 200ms ease;
+      &--done {
+        color: $text-muted;
+      }
 
-        &.copied {
-          color: $circle;
-          font-size: 14px;
+      &--active {
+        color: $text-heading;
+
+        .progress-rail__number {
+          color: $accent;
+        }
+
+        .progress-rail__bar {
+          width: 32px;
+          background-color: $accent;
         }
       }
+    }
 
-      .show-copied {
-        opacity: 1;
-        transition: all 200ms ease;
-        font-size: 10px;
-        color: #9a9a9a;
-        margin-right: 4px;
-        margin-left: auto;
-      }
+    &__number {
+      width: 22px;
+      color: $text-faint;
+    }
 
-      .hide-copied {
-        opacity: 0;
-      }
+    &__bar {
+      height: 1px;
+      width: 12px;
+      background-color: $text-faint;
     }
   }
 }
