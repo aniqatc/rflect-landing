@@ -61,8 +61,8 @@ export const heroTerminal = {
       command: '',
       outputHTML: `
         <p class="heading">✨ Your reflection has been saved!</p>
-        <p class="indent">Word Count: <span class="number">250</span></p>
-        <p class="indent">Time Spent Writing: <span class="number">15</span>m</p>`,
+        <p class="indent">Word Count: <span class="number">18</span></p>
+        <p class="indent">Time Spent Writing: <span class="number">2</span>m <span class="number">14</span>s</p>`,
     },
   ],
 };
@@ -80,8 +80,8 @@ export const features = [
       {
         command: 'npm install -g rflect',
         outputHTML: `
-          <p class="output">installed <span class="number">56</span> packages for rflect, including:</p>
-          <p class="indent">calendar.js · date-fns · chalk · commander.js · inquirer</p>`,
+          <p class="output">added <span class="number">56</span> packages, including:</p>
+          <p class="indent">calendar-js · date-fns · chalk · commander · inquirer</p>`,
       },
       {
         command: 'rflect',
@@ -172,18 +172,19 @@ export const features = [
     description:
       'Look through the current collection of writing prompts before you start.',
     includeScript: true,
-    script: 'rflect prompts',
+    script: 'rflect prompts --all',
     terminal: [
       {
-        command: 'rflect prompts',
+        command: 'rflect prompts --all',
         outputHTML: `
+          <p class="heading">All Available Prompts</p>
           <p class="output"><span class="number">1</span>. What made you feel most alive today?</p>
           <p class="output"><span class="number">2</span>. What's something you're looking forward to, and why?</p>
           <p class="output"><span class="number">3</span>. What's a challenge you faced today and how did you handle it?</p>
-          <p class="output"><span class="number">4</span>. Maya Angelou said <em>"There is no greater agony than bearing an untold story inside you."</em> What's a story you need to tell?</p>
-          <p class="output"><span class="number">5</span>. Name three small things that brought you joy today.</p>
-          <p class="output"><span class="number">6</span>. How are you different from who you were six months ago?</p>
-          <p class="output"><span class="number">7</span>. What skill are you currently developing?</p>
+          <p class="output"><span class="number">4</span>. If you could redo one moment from today, what would it be?</p>
+          <p class="output"><span class="number">5</span>. What's something new you learned about yourself recently?</p>
+          <p class="output"><span class="number">6</span>. What surprised you today?</p>
+          <p class="output"><span class="number">7</span>. When did you feel most confident today?</p>
           <p class="muted">...and more</p>`,
       },
     ],
@@ -192,7 +193,7 @@ export const features = [
     id: 5,
     title: 'Track your moods',
     description:
-      'See how your moods line up with your writing habits and what you write about.',
+      'See how often you feel each mood and which days you felt it.',
     includeScript: true,
     script: 'rflect moods --calendar',
     terminal: [
