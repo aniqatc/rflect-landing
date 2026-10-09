@@ -23,7 +23,9 @@ function createMoodCalendar() {
     let status = 'empty';
     if (day > getDate(today)) status = 'future';
     else if (moodDays.includes(day)) status = 'mood';
-    days += `<span class="day day--${status}">${day}</span>`;
+    // the CLI shows the mood emoji in place of the date
+    const label = status === 'mood' ? '😌' : day;
+    days += `<span class="day day--${status}">${label}</span>`;
   }
 
   // only count mood days that have already happened this month
@@ -32,10 +34,10 @@ function createMoodCalendar() {
   return {
     calendar: `
       <div class="calendar">
-        <p class="calendar-header">😌 peaceful · ${format(today, 'MMMM yyyy')}</p>
+        <p class="calendar-header">😌 peaceful Calendar: ${format(today, 'MMMM yyyy')}</p>
         <div class="calendar-grid">${weekdays}${blanks}${days}</div>
       </div>`,
-    summary: `<p class="output">You felt <span class="number">peaceful</span> on <span class="number">${moodCount}</span> ${moodCount === 1 ? 'day' : 'days'} this month.</p>`,
+    summary: `<p class="output">You felt <span class="number">😌 peaceful</span> on <span class="number">${moodCount}</span> ${moodCount === 1 ? 'day' : 'days'} this month.</p>`,
   };
 }
 
@@ -57,7 +59,10 @@ export const heroTerminal = {
     },
     {
       command: '',
-      outputHTML: `<p class="saved">✨ Saved. <span class="number">250</span> words · <span class="number">15</span>m writing</p>`,
+      outputHTML: `
+        <p class="heading">✨ Your reflection has been saved!</p>
+        <p class="indent">Word Count: <span class="number">250</span></p>
+        <p class="indent">Time Spent Writing: <span class="number">15</span>m</p>`,
     },
   ],
 };
@@ -81,17 +86,17 @@ export const features = [
       {
         command: 'rflect',
         outputHTML: `
-          <p class="output">A CLI tool for guided reflections and journaling.</p>
+          <p class="output">📝 A CLI tool for guided reflections and journaling.</p>
           <p class="heading">COMMANDS:</p>
-          <div class="command-item"><span class="command">write</span><span class="description">Start a reflection with a curated prompt</span></div>
-          <div class="command-item"><span class="command">show [options]</span><span class="description">Revisit your past reflections</span></div>
-          <div class="command-item"><span class="command">prompts [options]</span><span class="description">Browse available writing prompts</span></div>
-          <div class="command-item"><span class="command">tags [options]</span><span class="description">Discover themes in your writing</span></div>
-          <div class="command-item"><span class="command">moods [options]</span><span class="description">Track your emotional journey</span></div>
-          <div class="command-item"><span class="command">init</span><span class="description">Set up your account and preferences</span></div>
-          <div class="command-item"><span class="command">config [options]</span><span class="description">Customize your preferences</span></div>
-          <div class="command-item"><span class="command">stats [options]</span><span class="description">View insights about your writing</span></div>
-          <div class="command-item"><span class="command">delete [options]</span><span class="description">Manage your reflection history</span></div>
+          <div class="command-item"><span class="command">write</span><span class="description">Start a new reflection with a thoughtfully curated prompt.</span></div>
+          <div class="command-item"><span class="command">show [options]</span><span class="description">Browse and revisit your past reflections.</span></div>
+          <div class="command-item"><span class="command">prompts [options]</span><span class="description">Browse available writing prompts.</span></div>
+          <div class="command-item"><span class="command">tags [options]</span><span class="description">Discover themes in your reflection journey.</span></div>
+          <div class="command-item"><span class="command">moods [options]</span><span class="description">Track your emotional journey through writing.</span></div>
+          <div class="command-item"><span class="command">init</span><span class="description">Set up your rflect account with initial preferences.</span></div>
+          <div class="command-item"><span class="command">config [options]</span><span class="description">Customize your reflection preferences.</span></div>
+          <div class="command-item"><span class="command">stats [options]</span><span class="description">View insights about your writing journey.</span></div>
+          <div class="command-item"><span class="command">delete [options]</span><span class="description">Manage your reflection history.</span></div>
           <div class="command-item"><span class="command">upcoming</span><span class="description">Peek at future rflect features</span></div>`,
       },
     ],
@@ -110,12 +115,16 @@ export const features = [
           <p class="output">Welcome to rflect!</p>
           <p class="prompt">? What should I call you?</p>
           <p class="answer">Julia</p>
-          <p class="prompt">? Would you like to use your system editor for writing?</p>
+          <p class="prompt">? Would you like to use your system editor for writing? (e.g., vim, nano, notepad)?</p>
           <p class="answer">No</p>
+          <p class="prompt">? Would you like to set writing goals?</p>
+          <p class="answer">Yes</p>
           <p class="prompt">? How often would you like to write with rflect?</p>
           <p class="answer">Daily entries</p>
           <p class="prompt">? How many entries would you like to write daily?</p>
           <p class="answer">1</p>
+          <p class="prompt">? How often would you like to track your word count?</p>
+          <p class="answer">Weekly</p>
           <p class="prompt">? How many words would you like to write weekly?</p>
           <p class="answer">2000</p>`,
       },
@@ -123,6 +132,8 @@ export const features = [
         command: '',
         outputHTML: `
           <p class="heading">✨ Welcome, Julia!</p>
+          <p class="output">You will be writing in basic text inputs with rflect.</p>
+          <p class="output">Your goals:</p>
           <p class="indent">Write <span class="number">1</span> entry daily</p>
           <p class="indent">Write <span class="number">2000</span> words weekly</p>`,
       },
@@ -262,12 +273,12 @@ export const features = [
         command: 'rflect upcoming',
         outputHTML: `
           <p class="output">Coming soon to rflect:</p>
-          <div class="command-item"><span class="command">rflect theme</span><span class="description">Personalize your journaling experience</span></div>
+          <div class="command-item"><span class="command">rflect theme</span><span class="description">Personalize your journaling experience with custom themes</span></div>
           <div class="command-item"><span class="command">rflect backup</span><span class="description">Keep your reflections safe with cloud backup</span></div>
-          <div class="command-item"><span class="command">rflect search</span><span class="description">Find specific moments in your journey</span></div>
-          <div class="command-item"><span class="command">rflect remind</span><span class="description">Set gentle reminders to reflect</span></div>
+          <div class="command-item"><span class="command">rflect search &lt;term&gt;</span><span class="description">Find specific moments in your journey</span></div>
+          <div class="command-item"><span class="command">rflect remind</span><span class="description">Set gentle reminders for your reflection practice</span></div>
           <div class="command-item"><span class="command">rflect encrypt</span><span class="description">Add extra privacy to selected entries</span></div>
-          <div class="command-item"><span class="command">rflect analyze</span><span class="description">Insights into your reflection patterns</span></div>`,
+          <div class="command-item"><span class="command">rflect analyze</span><span class="description">Gain insights into your reflection patterns with AI</span></div>`,
       },
     ],
   },
