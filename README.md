@@ -1,78 +1,82 @@
 # rflect
 
-📝 Landing page for a CLI tool focused on providing guided reflections and journaling.
+The landing page for rflect, a CLI for guided journaling. It walks through each command as a terminal session you scroll through.
 
-**Links: [NPM Package](https://www.npmjs.com/package/rflect) | [CLI Repository](https://github.com/aniqatc/rflect-cli) | [Landing Page](https://rflect.aniqa.dev)**
+**[Live site](https://rflect.aniqa.dev)** · [CLI repository](https://github.com/aniqatc/rflect-cli) · [npm package](https://www.npmjs.com/package/rflect)
 
-<a href="https://rflect.aniqa.dev" target="_blank"><img src="public/rflect-screenshot-zoomed.png"></a>
+<a href="https://rflect.aniqa.dev"><img src="public/rflect-screenshot-zoomed.png" alt="The rflect landing page: a dark terminal window showing the install output and the list of rflect commands" width="800"></a>
+
+<!-- TODO: this screenshot is from January 2025, before the October 2026 redesign, and shows an IP address in the terminal title bar. Replace it with a screenshot of the current page. -->
 
 ## Tech
 
-- React
-- Vite
-- Sass
-- Framer Motion
-
-## Libraries & Integrations
-
-- Date-fns for date/time formatting
-- Font Awesome for icons
-- GitHub API for repository star count
-- NPM API for current version
+- React and Vite
+- Sass, with partials per section and shared variables
+- Framer Motion for scroll-triggered animations
+- date-fns for the dates in the terminal demos
+- Font Awesome icons
+- GitHub and npm APIs for the live star count and version
 
 ## Features
 
-### Dynamic Terminal Simulation
+- Eight scroll-snapped windows, each pairing a command with a terminal that plays its output: install, setup, writing, prompts, the mood calendar, stats, settings and what's coming next
+- A progress rail shows which window you're on and jumps to any of them
+- One-click copy for every command, starting with `npm install -g rflect`
+- Live GitHub star count and current npm version in the header
 
-- Provides an interactive, scroll-based demonstration of the CLI tool
-- Each feature is presented as a live terminal session
-- Content appears dynamically as users scroll, mimicking a real terminal experience
-- Showcases:
-  - Installation process
-  - Available commands
-  - Sample outputs
-  - User interactions
+## Design
 
-### Key Interactive Elements
+- Terminal output matches what rflect-cli prints, so the page shows the real tool rather than a mockup
+- Demos use today's date, so the mood calendar always shows the current month
+- On smaller screens each window stacks its terminal underneath the description
 
-- **Scroll-Triggered Content**: Terminal outputs reveal themselves as users scroll
-- **Live GitHub Star Counter**: Real-time display of repository stars
-- **Live NPM Version**: Real-time display of the current version code for the package
-- **Interactive Command Buttons**: One-click copy functionality for each feature's command, starting with the NPM install script provided in the topmost section of the page
-- **Progress Rail**: Shows which of the 8 feature windows you're on, and jumps to any of them
-- **Responsive Layout**: Feature windows stack with their terminal underneath on smaller screens
+## Accessibility
 
-## Key Concepts
+- The progress rail is a labeled list that marks the current step with `aria-current`
+- Screen readers hear "Copied!" when a command is copied
+- Decorative icons are hidden from screen readers
+- Respects reduced motion through Framer Motion's `MotionConfig`
 
-- Uses Framer Motion with variant objects for customized, sequenced animations
-- Uses Framer Motion for scroll-based triggers for animations, in sync with the native CSS scroll-snapping feature
-- Uses React state and hooks to manage dynamic content rendering
-- Each feature window renders its own Terminal component from the feature data, and animates in when it scrolls into view
-- Respects `prefers-reduced-motion` through Framer Motion's `MotionConfig`
-- Integrates with GitHub API for live star count
-- Implements native clipboard API for one-click command copying
+## Project structure
 
-## CLI Capabilities
+- `src/components/`: header (title and status bar), hero, features (window and progress rail), terminal, footer and the reusable copy button
+- `src/data/features.js`: each window's title, description, command and terminal output
+- `src/styles/`: one Sass partial per section, plus variables and breakpoints
 
-For more details on the CLI tool itself, visit the [dedicated repository for rflect-cli](https://github.com/aniqatc/rflect-cli).
+## Key concepts
 
-- Guided writing prompts
-- Mood tracking
-- Writing stats and insights
-- Customizable account settings
+- **Data-driven sections.** Every window renders from `features.js`, so adding a command means adding one object.
+- **Scroll-driven animation.** CSS scroll snapping sets the pace and Framer Motion's `whileInView` reveals each terminal as it arrives.
+- **Live data from public APIs.** The star count and version come straight from GitHub and npm, so they never go stale.
 
-## Project Structure
+## Setup
 
-- `components/`: holds all components files, each has its own `index.js` for barrel exports
-- `data/`: holds the details relating to each feature (title, description, command, output, metadata, etc)
-- `styles/`: holds SCSS partials for each component, global variables file for a consistent theme, and main.scss file
+Requires Node 18+. No API keys needed.
 
-## Available Scripts
+```bash
+git clone https://github.com/aniqatc/rflect-landing.git
+cd rflect-landing
+npm install
+npm start
+```
 
-Built with [Vite](https://vite.dev/). Available scripts include:
+## Scripts
 
-- `npm start`: Start development server
-- `npm run build`: Create production build
-- `npm run preview`: Preview production build
-- `npm run lint`: Run ESLint
-- `npm run format`: Format code with Prettier
+| Command | What it does |
+| --- | --- |
+| `npm start` | Dev server |
+| `npm run build` | Production build |
+| `npm run preview` | Preview the build |
+| `npm run lint` | ESLint |
+| `npm run format` | Prettier |
+
+## Changelog
+
+### October 2026
+
+- Redesigned around scroll-snapped feature windows with a progress rail
+- Terminal demos rewritten to match the CLI's real output
+
+### January 2025
+
+- Initial release: sticky header and terminal, scroll-triggered demos, copy buttons and live star count and version
