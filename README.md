@@ -6,8 +6,6 @@ The landing page for rflect, a CLI for guided journaling. It walks through each 
 
 <a href="https://rflect.aniqa.dev"><img src="public/rflect-screenshot-zoomed.png" alt="The rflect landing page: a dark terminal window showing the install output and the list of rflect commands" width="800"></a>
 
-<!-- TODO: this screenshot is from January 2025, before the October 2026 redesign, and shows an IP address in the terminal title bar. Replace it with a screenshot of the current page. -->
-
 ## Tech
 
 - React and Vite
@@ -62,13 +60,13 @@ npm start
 
 ## Scripts
 
-| Command | What it does |
-| --- | --- |
-| `npm start` | Dev server |
-| `npm run build` | Production build |
+| Command           | What it does      |
+| ----------------- | ----------------- |
+| `npm start`       | Dev server        |
+| `npm run build`   | Production build  |
 | `npm run preview` | Preview the build |
-| `npm run lint` | ESLint |
-| `npm run format` | Prettier |
+| `npm run lint`    | ESLint            |
+| `npm run format`  | Prettier          |
 
 ## Changelog
 
